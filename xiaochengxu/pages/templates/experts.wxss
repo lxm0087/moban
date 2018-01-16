@@ -1,0 +1,2 @@
+@import 'foot.wxss';
+.imgt{width: 328rpx;height: 166rpx;}

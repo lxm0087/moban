@@ -1,0 +1,99 @@
+/* pages/shebei/shebei.wxss */
+@import "../templates/experts.wxss";
+
+.shebei-container{
+  width:98%;
+  margin:20rpx auto 0;
+  text-align: center;
+
+}
+
+.img-box{
+  border:1px solid #e5e5e5;
+  box-sizing:border-box;
+  width:240rpx;
+  height:230rpx;
+  font-size:0;
+}
+
+.img-box image{
+  width:100%;
+  height:100%;
+  display:block;
+  border:0;
+}
+
+.flex-item button{
+  display:block;
+  border-radius:20rpx;
+  line-height:1.5;
+  width:97%;
+}
+
+.flex-item text{
+  font-size: 30rpx;
+  font-weight:800;
+  line-height: 2;
+  margin-top: 7rpx;
+}
+
+.flex-item text::after{
+  content:'';
+  background:url('http://www.nclaimei.com/images/expertfg.png')no-repeat center;
+  display:block;
+  height: 6rpx;
+  margin-bottom:15rpx;
+  background-size:180rpx 6rpx;
+}
+
+.shebeiDetail{
+  width:84%;
+  margin:40rpx auto 0;
+}
+
+.shebeiDetail text{
+  font-size:22rpx; 
+  line-height: 1.5;
+}
+
+.part1 image{
+  width: 240rpx;
+  height:280rpx;
+  display: block;
+}
+
+.shebei-intor{
+  width:340rpx;
+  height:280rpx;
+}
+
+.shebei-tit{
+  font-size: 24rpx !important;
+  color:#666;
+  display:block;
+  margin-top:60rpx;
+}
+
+.block{
+  display: block;
+}
+
+.blod{
+  font-weight: 700;
+}
+
+.mar2{
+  margin-top: 40rpx;
+}
+
+.close-img{
+  width: 30rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+
+.tui{
+  position: absolute;
+  top:60rpx;
+  left:20rpx;
+}

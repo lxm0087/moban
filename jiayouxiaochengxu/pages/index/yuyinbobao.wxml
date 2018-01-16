@@ -1,0 +1,32 @@
+<view style="height: {{scrollHeight + 44 - 200}}px; ">
+  <map id="mymap" longitude="{{my_long}}" latitude="{{my_lat}}" scale="17" markers="{{map_markers}}" show-location="false" style="width: 100%; height: {{scrollHeight + 44 - 40}}px;"  polyline="{{map_polylines}}"></map>
+</view>
+
+
+<view style="width: 100%; background-color: #F9F9F9; height: 40px; bottom: 0px; position: fixed; font-size: 13px; color: #333333;">
+  <view style="width: 100%; background-color: #F9F9F9; height: 40px; line-height: 40px; color: #666666; text-align: center; overflow: hidden;">
+    <view style="float: left; margin-left: 6px; margin-top: 6px; width: 80px;" bindtap="button_wodeweizhi">
+      <view style="background-color: #50bd24; color:#FFFFFF; height: 20px; line-height: 20px; border-radius: 6px; padding: 4px; font-size: 12px; text-align: center; ">
+        我的位置
+      </view>
+    </view>
+    {{label_map_center_longlat}}
+    <view style=" float: right; margin-right: 6px; margin-top: 6px; width: 80px;" bindtap="button_bofangxiayige">
+      <view style="background-color: #50bd24; color:#FFFFFF; height: 20px; line-height: 20px; border-radius: 6px; padding: 4px; font-size: 12px; text-align: center; ">
+        手动播报
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<audio wx:if="{{yyBobao_play}}" name="yyBobao" src="{{yuyin_mulu}}{{audio_src}}.mp3" id="yyBobao" controls="false" bindended="yyBobao_playend"></audio>
+
+
+
+<scroll-view scroll-y="true" style="height: 0px; background-color:#FFFFFF; bottom: 0px; display: none;" >
+  <view wx:for="{{xianlu_list}}" wx:key="shunxu" wx:for-item="items" style="padding: 10px; display: fixed; ">
+    <audio src="{{yuyin_mulu}}{{items.id}}.mp3" controls="false" ></audio>
+  </view>
+</scroll-view>

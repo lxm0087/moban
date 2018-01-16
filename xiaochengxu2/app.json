@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/move/move",
+    "pages/index/index",
+    "pages/welcom/welcom"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#b3d4db",
+    "navigationBarTitleText": "豆瓣电影",
+    "navigationBarTextStyle": "#000"
+  }
+}

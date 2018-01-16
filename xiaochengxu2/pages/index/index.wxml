@@ -1,0 +1,6 @@
+<view class='index-container'>
+  <view class='search flex' >
+     <image src='../images/icon/search.png' class='search-img'></image> 
+    <input placeholder-style="holdStyle" class='ipt' bingtap='search'  placeholder="釜山行、夏有乔木山" />
+  </view>
+</view>

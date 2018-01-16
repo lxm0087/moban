@@ -1,0 +1,108 @@
+<!--pages/doctors/doctors.wxml-->
+ <import src="../templates/topNav.wxml"/>
+ <import src="../templates/experts.wxml"/>
+  <view>
+    <view class='navbg'>
+    <block wx:for="{{navList}}" wx:key="{{id}}"><template is='topNav' data='{{...item}}'/></block>
+    </view>
+    <view >
+      <image class="topImg" src="http://www.nclaimei.com/d/file/MobileCom/mnav/topnav/2017-10-17/7ba0e9d31d93c012f36681be89da373e.jpg"></image>
+    </view>
+    <view class='expert-box'>
+      <button class="{{expertShow ? 'expert-check' : 'expert-dis'   }}" bindtap="changeExp">院内专家</button>
+      <button class="{{expertShow ? 'expert-dis' : 'expert-check' }}" bindtap="changeExp2">特邀专家</button>
+    </view>
+    <view class="flex expert-container flex-wrap flex-bw" wx:if="{{expertShow}}">
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海2&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button bindtap="showDetail">了解更多+</button>
+        </view>
+      </view>
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button>了解更多+</button>
+        </view>
+      </view>
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button>了解更多+</button>
+        </view>
+      </view>
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button>了解更多+</button>
+        </view>
+      </view>
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button>了解更多+</button>
+        </view>
+      </view>
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button>了解更多+</button>
+        </view>
+      </view>
+    </view>
+   <!-- 特邀专家开始 -->
+    <view class="flex expert-container flex-wrap flex-bw" wx:if="{{!expertShow}}">
+      <view class="flex-expert">
+        <image src='http://www.nclaimei.com/d/file/MobileCom/ymgl/zjgl/2018-01-02/c0536c4f596dfddbfa2afcab796b8218.jpg'></image>
+        <view class="border-box">
+          <text  class='henxian'><text decode="true" style="font-weight:700;">彭圣海&nbsp;&nbsp;</text>技术院长</text>
+          <text class='shuoming'>擅长项目:眼部综合整形、鼻部综合整形、面部整形等</text>
+          <button size='5'>在线咨询+</button>
+          <button bindtap="showDetail">了解更多+</button>
+        </view>
+      </view>
+    </view>
+       <!-- 特邀专家结束-->
+       <template is='experts' data="{{arr1:arr1,arr2:arr2}}"></template>
+  </view>
+
+  <view class='doc-detail' wx:if="{{isShow}}">
+    <view class='doc-detail-box'>
+      <view class='part1'>
+        <image class='headimg' src="../img/3.jpg"></image>
+        <text class='doctorsName' style='text-align:center;'>彭圣海</text>
+        <image bindtap="closeTc" class='close' src="../img/xx.jpg"></image>
+      </view>
+      <view class='doctors-intor'>
+        <text class='tit1' decode='true'>&emsp;职务与职称</text>
+        <text class='tit2' decode='true'>&emsp;莱美院长</text>
+      </view>
+      <view class='intor-box'>
+        <text  decode='true' >&emsp;美丽宣言</text>
+        <text>在我眼里每一位顾客都是一个可以打造的艺术品，我可以用我的专业让求美者美的更恒久,在我眼里每一位顾客都是一个可以打造的艺术品，我可以用我的专业让求美者美的更恒久,
+        </text>
+      </view>
+      <view class='intor-box'>
+        <text  class='tit1'  decode='true' >&emsp;专家擅长</text>
+        <text>眼部综合整形、鼻部综合整形、 面部整形等,在我眼里每一位顾客都是一个可以打造的艺术品，我可以用我的专业让求美者美的更恒久</text>
+      </view>
+    </view>
+  </view>

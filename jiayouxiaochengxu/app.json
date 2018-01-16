@@ -1,0 +1,31 @@
+{
+  "pages":[
+
+    "pages/index/index",
+    "pages/index/lianxi",
+    "pages/index/jiaolian",
+
+    "pages/index/jiaxiaoxinxi",
+
+    "pages/index/yuyindingyi",
+    "pages/index/yuyinbobao",
+
+
+    "pages/index/exam",
+    "pages/index/ready",
+    "pages/index/paper",
+    "pages/index/score",
+
+    "pages/index/wxpay",
+    "pages/index/order",
+    "pages/index/pingjia",
+    "pages/index/history"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "驾优考驾照™",
+    "navigationBarTextStyle":"black"
+  },
+      "enablePullDownRefresh": true
+}

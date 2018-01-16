@@ -1,0 +1,5 @@
+<import src="../move-group/move-group-tem.wxml" />
+<template name="moveListTem">
+
+    <template is="moveGroupTem" />  
+</template>  

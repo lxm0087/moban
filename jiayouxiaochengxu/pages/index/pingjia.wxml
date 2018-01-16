@@ -1,0 +1,113 @@
+
+<view style="width: 100%; background-color:#FFFFFF; z-index: 100; height: 70px; overflow: hidden; ">
+  <view style="width: 15%; background-color:#FFFFFF;  float: left; text-align: center; height: 34px; padding: 6px 6px 4px 10px; ">
+    <image src="{{jiaolian_touxiang}}" mode="aspectFit" style="width: 48px; height: 48px; border-radius: 6px; " ></image>
+  </view>
+  <view style="width: 60%; padding: 4px; background-color:#FFFFFF; float: left; color:#999999; font-size: 14px; font-weight: bold; ">
+    <view style=" padding: 1px; "><label style="color: #666666; font-size: 16px; font-weight: bold; ">{{jiaolian_xingming}}</label> 
+    <label style="padding-left: 4px; color: #ffd701; font-size: 12px; ">{{jiaolian_jibie}}</label></view>
+    <view style=" padding: 1px; color: #999999; font-size: 12px;  font-weight:normal; ">{{jiaolian_chepai}}</view>
+    <view wx:if="{{(dingdan_zhuangtai!='s')}}" style=" padding-top: 1px; padding-right: 8px; line-height: 14px; float: left;">
+      <image wx:if="{{(jiaolian_pingfen >= 1)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 2)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 3)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 4)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 5)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen_half)}}" src="../../images/star.1.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+    </view>
+    <label  wx:if="{{(dingdan_zhuangtai!='s')}}" style="background-color: #ffd701; padding: 2px 4px 2px 4px; border-radius: 4px; font-size: 11px; font-weight: normal; color: #FFFFFF;">{{jiaolian_pingfen}}</label>
+  </view>
+  <view style="width: 10%; background-color:#FFFFFF; text-align: center; float: right; height: 34px; padding: 16px 10px 0px 10px; ">
+    <image src="../../images/order.callto.png" mode="aspectFit"style="width: 32px; height: 32px; " bindtap="makecallto"></image>
+  </view>
+</view>
+
+<view style="background-color: #FFFFFF; padding: 0px 20px 10px 20px; overflow: hidden;">
+  <view style="background-color: #FFFFFF; height: 20px; overflow: hidden; position:relative;">
+    <view style="width: 25%; text-align: center; color: #D9D9D9; height: 20px; line-height:20px; left:0; right:0; z-index:2; background:#fff; display:inline-block; margin:0 auto; position:absolute; font-size: 12px; padding: 4px 6px 4px 6px;">
+    评价教练
+    </view>
+    <view style=" border-bottom: 1px solid #f7f7f7; height: 12px;"></view>
+  </view>
+</view>
+
+<view style=" text-align: center;">
+    <view style=" padding-top: 1px; padding-right: 8px; line-height: 14px; ">
+      <image src="../../images/{{image_star_of[0]}}" mode="aspectFit"style="padding: 6px; width: 30px; height: 30px; " bindtap="click_star" data-star="1"></image>
+      <image src="../../images/{{image_star_of[1]}}" mode="aspectFit"style="padding: 6px; width: 30px; height: 30px; " bindtap="click_star" data-star="2"></image>
+      <image src="../../images/{{image_star_of[2]}}" mode="aspectFit"style="padding: 6px; width: 30px; height: 30px; " bindtap="click_star" data-star="3"></image>
+      <image src="../../images/{{image_star_of[3]}}" mode="aspectFit"style="padding: 6px; width: 30px; height: 30px; " bindtap="click_star" data-star="4"></image>
+      <image src="../../images/{{image_star_of[4]}}" mode="aspectFit"style="padding: 6px; width: 30px; height: 30px; " bindtap="click_star" data-star="5"></image>
+    </view>
+    <view><label style="color: #ffd701; font-size: 12px; ">{{label_pingjia_title}}</label></view>
+</view>
+
+<view style=" height: 20px; "></view>
+
+<view style="background-color: #FFFFFF; padding: 0px 20px 10px 20px; overflow: hidden;">
+  <view style="background-color: #FFFFFF; height: 20px; overflow: hidden; position:relative;">
+    <view style="width: 25%; text-align: center; color: #D9D9D9; height: 20px; line-height:20px; left:0; right:0; z-index:2; background:#fff; display:inline-block; margin:0 auto; position:absolute; font-size: 12px; padding: 4px 6px 4px 6px;">
+    请选择标签
+    </view>
+    <view style=" border-bottom: 1px solid #f7f7f7; height: 12px;"></view>
+  </view>
+</view>
+
+<view style=" height: 10px; "></view>
+
+
+<view style="background-color:#FFFFFF; margin: 0 auto; text-align: center; width: 95%; height: 100px; ">
+  <view wx:if="{{label_color_list[0]}}" style="background-color:#FFFFFF; overflow-hidden; width: 80%; height: 36px; margin:0 auto;">
+    <view wx:if="{{label_color_list[0]}}" data-idx="{{label_color_list[0].idx}}" bindtap="click_pingjia_label" style=" padding: 4px; font-size: 14px; display:inline; line-height: 18px; color: {{label_color_list[0].color}}; border: 1px {{label_color_list[0].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[0].ping}}</label>
+      <image src="../../images/{{label_color_list[0].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view>
+    <view wx:if="{{label_color_list[1]}}" style=" padding: 10px; font-size: 12px; display:inline; "> </view>
+    <view wx:if="{{label_color_list[1]}}" data-idx="{{label_color_list[1].idx}}" bindtap="click_pingjia_label"  style=" padding: 4px; font-size: 14px; display:inline; color: {{label_color_list[1].color}}; border: 1px {{label_color_list[1].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[1].ping}}</label>
+      <image src="../../images/{{label_color_list[1].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view> 
+  </view>
+  <view style="background-color:#FFFFFF; overflow-hidden; width: 100%; height: 36px;">
+    <view wx:if="{{label_color_list[2]}}" data-idx="{{label_color_list[2].idx}}" bindtap="click_pingjia_label" style=" padding: 4px; font-size: 14px; display:inline; line-height: 18px; color: {{label_color_list[2].color}}; border: 1px {{label_color_list[2].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[2].ping}}</label>
+      <image src="../../images/{{label_color_list[2].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view>
+    <view wx:if="{{label_color_list[3]}}" style=" padding: 10px; font-size: 12px; display:inline; "> </view>
+    <view wx:if="{{label_color_list[3]}}" data-idx="{{label_color_list[3].idx}}" bindtap="click_pingjia_label"  style=" padding: 4px; font-size: 14px; display:inline; color: {{label_color_list[3].color}}; border: 1px {{label_color_list[3].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[3].ping}}</label>
+      <image src="../../images/{{label_color_list[3].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view> 
+  </view>
+  <view style="background-color:#FFFFFF; overflow-hidden;  height: 36x;">
+    <view wx:if="{{label_color_list[4]}}" data-idx="{{label_color_list[4].idx}}" bindtap="click_pingjia_label" style=" padding: 4px; font-size: 14px; display:inline; line-height: 18px; color: {{label_color_list[4].color}}; border: 1px {{label_color_list[4].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[4].ping}}</label>
+      <image src="../../images/{{label_color_list[4].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view>
+    <view wx:if="{{label_color_list[5]}}" style=" padding: 10px; font-size: 12px; display:inline; "> </view>
+    <view wx:if="{{label_color_list[5]}}" data-idx="{{label_color_list[5].idx}}" bindtap="click_pingjia_label"  style=" padding: 4px; font-size: 14px; display:inline; color: {{label_color_list[5].color}}; border: 1px {{label_color_list[5].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[5].ping}}</label>
+      <image src="../../images/{{label_color_list[5].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view> 
+  </view>
+  <view style="background-color:#FFFFFF; overflow-hidden;  height: 36x;">
+    <view wx:if="{{label_color_list[6]}}" data-idx="{{label_color_list[6].idx}}" bindtap="click_pingjia_label" style=" padding: 4px; font-size: 14px; display:inline; line-height: 18px; color: {{label_color_list[6].color}}; border: 1px {{label_color_list[6].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[6].ping}}</label>
+      <image src="../../images/{{label_color_list[6].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view>
+    <view wx:if="{{label_color_list[7]}}" style=" padding: 10px; font-size: 12px; display:inline; "> </view>
+    <view wx:if="{{label_color_list[7]}}" data-idx="{{label_color_list[7].idx}}" bindtap="click_pingjia_label"  style=" padding: 4px; font-size: 14px; display:inline; color: {{label_color_list[7].color}}; border: 1px {{label_color_list[7].color}} solid; border-radius: 8px; ">
+      <label>{{label_color_list[7].ping}}</label>
+      <image src="../../images/{{label_color_list[7].tu}}" mode="aspectFit"style="padding-top: 2px; padding-right: 2px; padding-left: 4px; width: 12px; height: 12px; " ></image>
+    </view> 
+  </view>
+</view>
+ 
+
+<view style=" height: 20px; "></view>
+
+<view style="padding: 10px; " bindtap="click_submit_pingjia">
+  <view style="background-color: #50bd24; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;">
+    提交评论
+  </view>
+</view>

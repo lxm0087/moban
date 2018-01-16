@@ -1,0 +1,45 @@
+ <import src="../templates/topNav.wxml"/>
+ <import src="../templates/foot.wxml"/>
+ <view class='navbg'>
+ <block wx:for="{{navList}}" wx:key="{{id}}"><template is='topNav' data='{{...item}}'/></block>
+</view>
+<swiper class='swp' indicator-dots="{{indicaDots}}" autoplay='{{autoplay}}' indicator-color='{{indicatorColor}}' circular=true
+ interval='{{interval}}' indicator-active-color="{{indicatorActiveColor}}">
+<block wx:key="property" wx:for="{{imgUrls}}">
+  <swiper-item  class='aimg'>
+  <image src='{{item}}'  />
+      </swiper-item>
+</block>
+</swiper>
+<view class='text-bg'>
+<text class='p'  bindtap='openZoosUrl'>无痛玻尿酸777元</text>
+<text class='p'  bindtap='openZoosUrl'>美容冠777元</text>
+<text class='p' bindtap='openZoosUrl'>瘦脸针777元</text>
+</view>
+<view class='nav_item'>
+       <block wx:key='property' wx:for ="{{imgarr}}">
+    <image src='{{item}}'></image>
+  </block>
+</view>
+<view class='hotxm'>
+  <text class='t1'>热门项目
+   <!-- <text class='rand t2'>换一批</text> -->
+   </text>
+</view>
+<view class='hotxm_show' >
+  <block wx:key='property' wx:for ="{{xmarr}}">
+    <image src='{{item}}'></image>
+  </block>  
+</view>
+<swiper class='anli' indicator-dots="{{indicaDots}}" autoplay='{{autoplay}}' indicator-color='#ccc' circular=true
+ interval='{{interval}}' indicator-active-color="{{indicatorActiveColor}}">
+<block wx:key="property" wx:for="{{anlilist}}">
+  <swiper-item  class='aimg'>
+  <image src='{{item}}'  />
+      </swiper-item>
+</block>
+</swiper>
+<view class='zhuangjia'>
+  <image  src='http://www.nclaimei.com/d/file/p/2017-06-07/ec89d2b5b5aea271e78130ff5db5dbad.jpg'></image>
+</view>
+<template is='foot'/>

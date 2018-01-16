@@ -1,0 +1,506 @@
+
+
+<swiper wx:if="{{swiper_show}}" duration="500" style="height: {{pageHeight}}px; " current="{{swiper_current}}" bindchange="swiper_change">
+
+  <block wx:for-items="{{examList}}" wx:key="id" style="background-color:#FFFFFF;" >
+
+  <swiper-item style="display: block; background-color:#FFFFFF; overflow: auto; ">
+
+    <view style="background: #FFFFFF; " data-hash="{{item.id}}">
+
+      <view style="padding: 10px; line-height: 24px; "><text>{{item.idx}}. {{item.t}}</text></view>
+      <view wx:if="{{item.isrc && item.isrc.length >= 1}}" style="display: block; "><image style="width:100%" src="http://www.jyouw.cn/img/{{item.isrc}}" style=" width:100%; height: 170px; display:block; overflow:hidden;"></image></view>
+      <view wx:if="{{item.vsrc && item.vsrc.length >= 1}}" style="display: block; "><video style="width:100%" src="http://www.jyouw.cn/img/{{item.vsrc}}" controls></video></view>
+      <view style="background:{{showQA_A_BG}}; padding: 18px; border-top: 1px solid #F9F9F9; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px; " bindtap="click_answer_a" wx:if="{{(item.q[0])}}" data-idx="{{item.idx}}">{{item.q[0]}}</view>
+      <view style="background:{{showQA_B_BG}}; padding: 18px; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px;" bindtap="click_answer_b" wx:if="{{(item.q[1])}}" data-idx="{{item.idx}}">{{item.q[1]}}</view>
+      <view style="background:{{showQA_C_BG}}; padding: 18px; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px;" bindtap="click_answer_c" wx:if="{{(item.q[2])}}" data-idx="{{item.idx}}">{{item.q[2]}}</view>
+      <view style="background:{{showQA_D_BG}}; padding: 18px; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px;" bindtap="click_answer_d" wx:if="{{(item.q[3])}}" data-idx="{{item.idx}}">{{item.q[3]}}</view>
+
+      <view style="background:#FFFFFF; padding: 18px; text-align: center; color:#FFFFFF; font-size: 16px;" bindtap="click_submit_duoxuan" wx:if="{{(item.tp==2)}}">
+        <view style="background:#00b008; border-radius: 6px; padding: 16px; text-align: center; color:#FFFFFF; font-size: 16px;" wx:if="true">提交复选题</view>
+      </view>
+
+      <view style="background:#FFFFFF; padding: 20px 20px 0px 20px; font-size: 14px; color:{{(dacolor[item.idx - 1])}}; line-height: 18px;" wx:if="{{(idanswer[item.idx - 1].length >= 1)}}">
+        <text>答案 {{item.a}} , 您的选择 {{idanswer[item.idx - 1]}}</text>
+      </view>
+      <view style="background:#FFFFFF; padding: 10px 20px 20px 20px; font-size: 14px; color:#999999; line-height: 18px;" wx:if="{{(idanswer[item.idx - 1].length >= 1)}}">
+        <text>{{item.qa}}</text>
+      </view>
+
+    </view>
+
+  </swiper-item>
+
+  </block>
+
+</swiper>  
+
+<view wx:if="{{doPause}}" style="position:absolute; color:#FFFFFF; filter:alpha(opacity=60); -moz-opacity:0.6; -khtml-opacity: 0.6; opacity: 0.6; z-index: 100; background-color:#000000; overflow: hidden;  top: 0px; width: 100%; left: 0px; height:{{scrollHeight}}px; overflow: hidden;">
+  <view style="height: 120px;"></view>
+  <view style="font-size: 36px; font-weight: bold; text-align: center;">
+  暂 停 考 试
+  </view>
+</view>
+
+
+<scroll-view scroll-y="true" wx:if="{{showID}}" style="position:absolute; z-index: 100; background-color:#FFFFFF; overflow: hidden;  top: 0px; width: 100%; left: 0px; height:{{scrollHeight}}px; overflow: hidden;  text-align: center;">
+  <view style="height: 12px;"></view>
+
+  <view style="width: 100%; ">
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="1" style=" background-color:{{idcolor[0]}}; border:1px solid {{dacolor[0]}}; border-radius: 20px; width: 40px; " class="paperid_number">1</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="2" style=" background-color:{{idcolor[1]}}; border:1px solid {{dacolor[1]}}; border-radius: 20px; width: 40px; " class="paperid_number">2</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="3" style=" background-color:{{idcolor[2]}}; border:1px solid {{dacolor[2]}}; border-radius: 20px; width: 40px; " class="paperid_number">3</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="4" style=" background-color:{{idcolor[3]}}; border:1px solid {{dacolor[3]}}; border-radius: 20px; width: 40px; " class="paperid_number">4</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="5" style=" background-color:{{idcolor[4]}}; border:1px solid {{dacolor[4]}}; border-radius: 20px; width: 40px; " class="paperid_number">5</view>
+    </view>
+  </view>
+  </view>
+  <view style="height: 12px;"></view>
+
+  <view style="width: 100%; ">
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="6" style=" background-color:{{idcolor[5]}}; border:1px solid {{dacolor[5]}}; border-radius: 20px; width: 40px; " class="paperid_number">6</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="7" style=" background-color:{{idcolor[6]}}; border:1px solid {{dacolor[6]}}; border-radius: 20px; width: 40px; " class="paperid_number">7</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="8" style=" background-color:{{idcolor[7]}}; border:1px solid {{dacolor[7]}}; border-radius: 20px; width: 40px; " class="paperid_number">8</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="9" style=" background-color:{{idcolor[8]}}; border:1px solid {{dacolor[8]}}; border-radius: 20px; width: 40px; " class="paperid_number">9</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="10" style=" background-color:{{idcolor[9]}}; border:1px solid {{dacolor[9]}}; border-radius: 20px; width: 40px; " class="paperid_number">10</view>
+    </view>
+  </view>
+  </view>
+  <view style="height: 12px;"></view>
+
+   <view style="width: 100%; ">
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="11" style=" background-color:{{idcolor[10]}}; border:1px solid {{dacolor[10]}}; border-radius: 20px; width: 40px; " class="paperid_number">11</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="12" style=" background-color:{{idcolor[11]}}; border:1px solid {{dacolor[11]}}; border-radius: 20px; width: 40px; " class="paperid_number">12</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="13" style=" background-color:{{idcolor[12]}}; border:1px solid {{dacolor[12]}}; border-radius: 20px; width: 40px; " class="paperid_number">13</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="14" style=" background-color:{{idcolor[13]}}; border:1px solid {{dacolor[13]}}; border-radius: 20px; width: 40px; " class="paperid_number">14</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="15" style=" background-color:{{idcolor[14]}}; border:1px solid {{dacolor[14]}}; border-radius: 20px; width: 40px; " class="paperid_number">15</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="16" style=" background-color:{{idcolor[15]}}; border:1px solid {{dacolor[15]}}; border-radius: 20px; width: 40px; " class="paperid_number">16</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="17" style=" background-color:{{idcolor[16]}}; border:1px solid {{dacolor[16]}}; border-radius: 20px; width: 40px; " class="paperid_number">17</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="18" style=" background-color:{{idcolor[17]}}; border:1px solid {{dacolor[17]}}; border-radius: 20px; width: 40px; " class="paperid_number">18</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="19" style=" background-color:{{idcolor[18]}}; border:1px solid {{dacolor[18]}}; border-radius: 20px; width: 40px; " class="paperid_number">19</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="20" style=" background-color:{{idcolor[19]}}; border:1px solid {{dacolor[19]}}; border-radius: 20px; width: 40px; " class="paperid_number">20</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="21" style=" background-color:{{idcolor[20]}}; border:1px solid {{dacolor[20]}}; border-radius: 20px; width: 40px; " class="paperid_number">21</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="22" style=" background-color:{{idcolor[21]}}; border:1px solid {{dacolor[21]}}; border-radius: 20px; width: 40px; " class="paperid_number">22</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="23" style=" background-color:{{idcolor[22]}}; border:1px solid {{dacolor[22]}}; border-radius: 20px; width: 40px; " class="paperid_number">23</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="24" style=" background-color:{{idcolor[23]}}; border:1px solid {{dacolor[23]}}; border-radius: 20px; width: 40px; " class="paperid_number">24</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="25" style=" background-color:{{idcolor[24]}}; border:1px solid {{dacolor[24]}}; border-radius: 20px; width: 40px; " class="paperid_number">25</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="26" style=" background-color:{{idcolor[25]}}; border:1px solid {{dacolor[25]}}; border-radius: 20px; width: 40px; " class="paperid_number">26</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="27" style=" background-color:{{idcolor[26]}}; border:1px solid {{dacolor[26]}}; border-radius: 20px; width: 40px; " class="paperid_number">27</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="28" style=" background-color:{{idcolor[27]}}; border:1px solid {{dacolor[27]}}; border-radius: 20px; width: 40px; " class="paperid_number">28</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="29" style=" background-color:{{idcolor[28]}}; border:1px solid {{dacolor[28]}}; border-radius: 20px; width: 40px; " class="paperid_number">29</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="30" style=" background-color:{{idcolor[29]}}; border:1px solid {{dacolor[29]}}; border-radius: 20px; width: 40px; " class="paperid_number">30</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="31" style=" background-color:{{idcolor[30]}}; border:1px solid {{dacolor[30]}}; border-radius: 20px; width: 40px; " class="paperid_number">31</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="32" style=" background-color:{{idcolor[31]}}; border:1px solid {{dacolor[31]}}; border-radius: 20px; width: 40px; " class="paperid_number">32</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="33" style=" background-color:{{idcolor[32]}}; border:1px solid {{dacolor[32]}}; border-radius: 20px; width: 40px; " class="paperid_number">33</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="34" style=" background-color:{{idcolor[33]}}; border:1px solid {{dacolor[33]}}; border-radius: 20px; width: 40px; " class="paperid_number">34</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="35" style=" background-color:{{idcolor[34]}}; border:1px solid {{dacolor[34]}}; border-radius: 20px; width: 40px; " class="paperid_number">35</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="36" style=" background-color:{{idcolor[35]}}; border:1px solid {{dacolor[35]}}; border-radius: 20px; width: 40px; " class="paperid_number">36</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="37" style=" background-color:{{idcolor[36]}}; border:1px solid {{dacolor[36]}}; border-radius: 20px; width: 40px; " class="paperid_number">37</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="38" style=" background-color:{{idcolor[37]}}; border:1px solid {{dacolor[37]}}; border-radius: 20px; width: 40px; " class="paperid_number">38</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="39" style=" background-color:{{idcolor[38]}}; border:1px solid {{dacolor[38]}}; border-radius: 20px; width: 40px; " class="paperid_number">39</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="40" style=" background-color:{{idcolor[39]}}; border:1px solid {{dacolor[39]}}; border-radius: 20px; width: 40px; " class="paperid_number">40</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="41" style=" background-color:{{idcolor[40]}}; border:1px solid {{dacolor[40]}}; border-radius: 20px; width: 40px; " class="paperid_number">41</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="42" style=" background-color:{{idcolor[41]}}; border:1px solid {{dacolor[41]}}; border-radius: 20px; width: 40px; " class="paperid_number">42</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="43" style=" background-color:{{idcolor[42]}}; border:1px solid {{dacolor[42]}}; border-radius: 20px; width: 40px; " class="paperid_number">43</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="44" style=" background-color:{{idcolor[43]}}; border:1px solid {{dacolor[43]}}; border-radius: 20px; width: 40px; " class="paperid_number">44</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="45" style=" background-color:{{idcolor[44]}}; border:1px solid {{dacolor[44]}}; border-radius: 20px; width: 40px; " class="paperid_number">45</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;"></view>											   
+															   
+   <view style="width: 100%; ">												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="46" style=" background-color:{{idcolor[45]}}; border:1px solid {{dacolor[45]}}; border-radius: 20px; width: 40px; " class="paperid_number">46</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="47" style=" background-color:{{idcolor[46]}}; border:1px solid {{dacolor[46]}}; border-radius: 20px; width: 40px; " class="paperid_number">47</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="48" style=" background-color:{{idcolor[47]}}; border:1px solid {{dacolor[47]}}; border-radius: 20px; width: 40px; " class="paperid_number">48</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="49" style=" background-color:{{idcolor[48]}}; border:1px solid {{dacolor[48]}}; border-radius: 20px; width: 40px; " class="paperid_number">49</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="50" style=" background-color:{{idcolor[49]}}; border:1px solid {{dacolor[49]}}; border-radius: 20px; width: 40px; " class="paperid_number">50</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[51])}}" ></view>											   
+															   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[51])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="51" style=" background-color:{{idcolor[50]}}; border:1px solid {{dacolor[50]}}; border-radius: 20px; width: 40px; " class="paperid_number">51</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="52" style=" background-color:{{idcolor[51]}}; border:1px solid {{dacolor[51]}}; border-radius: 20px; width: 40px; " class="paperid_number">52</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="53" style=" background-color:{{idcolor[52]}}; border:1px solid {{dacolor[52]}}; border-radius: 20px; width: 40px; " class="paperid_number">53</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="54" style=" background-color:{{idcolor[53]}}; border:1px solid {{dacolor[53]}}; border-radius: 20px; width: 40px; " class="paperid_number">54</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="55" style=" background-color:{{idcolor[54]}}; border:1px solid {{dacolor[54]}}; border-radius: 20px; width: 40px; " class="paperid_number">55</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[56])}}" ></view>											   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[56])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="56" style=" background-color:{{idcolor[55]}}; border:1px solid {{dacolor[55]}}; border-radius: 20px; width: 40px; " class="paperid_number">56</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="57" style=" background-color:{{idcolor[56]}}; border:1px solid {{dacolor[56]}}; border-radius: 20px; width: 40px; " class="paperid_number">57</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="58" style=" background-color:{{idcolor[57]}}; border:1px solid {{dacolor[57]}}; border-radius: 20px; width: 40px; " class="paperid_number">58</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="59" style=" background-color:{{idcolor[58]}}; border:1px solid {{dacolor[58]}}; border-radius: 20px; width: 40px; " class="paperid_number">59</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="60" style=" background-color:{{idcolor[59]}}; border:1px solid {{dacolor[59]}}; border-radius: 20px; width: 40px; " class="paperid_number">60</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[61])}}" ></view>											   
+															   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[61])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="61" style=" background-color:{{idcolor[60]}}; border:1px solid {{dacolor[60]}}; border-radius: 20px; width: 40px; " class="paperid_number">61</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="62" style=" background-color:{{idcolor[61]}}; border:1px solid {{dacolor[61]}}; border-radius: 20px; width: 40px; " class="paperid_number">62</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="63" style=" background-color:{{idcolor[62]}}; border:1px solid {{dacolor[62]}}; border-radius: 20px; width: 40px; " class="paperid_number">63</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="64" style=" background-color:{{idcolor[63]}}; border:1px solid {{dacolor[63]}}; border-radius: 20px; width: 40px; " class="paperid_number">64</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="65" style=" background-color:{{idcolor[64]}}; border:1px solid {{dacolor[64]}}; border-radius: 20px; width: 40px; " class="paperid_number">65</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[66])}}" ></view>											   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[66])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="66" style=" background-color:{{idcolor[65]}}; border:1px solid {{dacolor[65]}}; border-radius: 20px; width: 40px; " class="paperid_number">66</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="67" style=" background-color:{{idcolor[66]}}; border:1px solid {{dacolor[66]}}; border-radius: 20px; width: 40px; " class="paperid_number">67</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="68" style=" background-color:{{idcolor[67]}}; border:1px solid {{dacolor[67]}}; border-radius: 20px; width: 40px; " class="paperid_number">68</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="69" style=" background-color:{{idcolor[68]}}; border:1px solid {{dacolor[68]}}; border-radius: 20px; width: 40px; " class="paperid_number">69</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="70" style=" background-color:{{idcolor[69]}}; border:1px solid {{dacolor[69]}}; border-radius: 20px; width: 40px; " class="paperid_number">70</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[71])}}" ></view>											   
+															   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[71])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="71" style=" background-color:{{idcolor[70]}}; border:1px solid {{dacolor[70]}}; border-radius: 20px; width: 40px; " class="paperid_number">71</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="72" style=" background-color:{{idcolor[71]}}; border:1px solid {{dacolor[71]}}; border-radius: 20px; width: 40px; " class="paperid_number">72</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="73" style=" background-color:{{idcolor[72]}}; border:1px solid {{dacolor[72]}}; border-radius: 20px; width: 40px; " class="paperid_number">73</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="74" style=" background-color:{{idcolor[73]}}; border:1px solid {{dacolor[73]}}; border-radius: 20px; width: 40px; " class="paperid_number">74</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="75" style=" background-color:{{idcolor[74]}}; border:1px solid {{dacolor[74]}}; border-radius: 20px; width: 40px; " class="paperid_number">75</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[76])}}" ></view>											   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[76])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="76" style=" background-color:{{idcolor[75]}}; border:1px solid {{dacolor[75]}}; border-radius: 20px; width: 40px; " class="paperid_number">76</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="77" style=" background-color:{{idcolor[76]}}; border:1px solid {{dacolor[76]}}; border-radius: 20px; width: 40px; " class="paperid_number">77</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="78" style=" background-color:{{idcolor[77]}}; border:1px solid {{dacolor[77]}}; border-radius: 20px; width: 40px; " class="paperid_number">78</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="79" style=" background-color:{{idcolor[78]}}; border:1px solid {{dacolor[78]}}; border-radius: 20px; width: 40px; " class="paperid_number">79</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="80" style=" background-color:{{idcolor[79]}}; border:1px solid {{dacolor[79]}}; border-radius: 20px; width: 40px; " class="paperid_number">80</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[81])}}" ></view>											   
+															   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[81])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="81" style=" background-color:{{idcolor[80]}}; border:1px solid {{dacolor[80]}}; border-radius: 20px; width: 40px; " class="paperid_number">81</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="82" style=" background-color:{{idcolor[81]}}; border:1px solid {{dacolor[81]}}; border-radius: 20px; width: 40px; " class="paperid_number">82</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="83" style=" background-color:{{idcolor[82]}}; border:1px solid {{dacolor[82]}}; border-radius: 20px; width: 40px; " class="paperid_number">83</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="84" style=" background-color:{{idcolor[83]}}; border:1px solid {{dacolor[83]}}; border-radius: 20px; width: 40px; " class="paperid_number">84</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="85" style=" background-color:{{idcolor[84]}}; border:1px solid {{dacolor[84]}}; border-radius: 20px; width: 40px; " class="paperid_number">85</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[86])}}" ></view>											   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[86])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="86" style=" background-color:{{idcolor[85]}}; border:1px solid {{dacolor[85]}}; border-radius: 20px; width: 40px; " class="paperid_number">86</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="87" style=" background-color:{{idcolor[86]}}; border:1px solid {{dacolor[86]}}; border-radius: 20px; width: 40px; " class="paperid_number">87</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="88" style=" background-color:{{idcolor[87]}}; border:1px solid {{dacolor[87]}}; border-radius: 20px; width: 40px; " class="paperid_number">88</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="89" style=" background-color:{{idcolor[88]}}; border:1px solid {{dacolor[88]}}; border-radius: 20px; width: 40px; " class="paperid_number">89</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="90" style=" background-color:{{idcolor[89]}}; border:1px solid {{dacolor[89]}}; border-radius: 20px; width: 40px; " class="paperid_number">90</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[91])}}" ></view>											   
+															   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[91])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="91" style=" background-color:{{idcolor[90]}}; border:1px solid {{dacolor[90]}}; border-radius: 20px; width: 40px; " class="paperid_number">91</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="92" style=" background-color:{{idcolor[91]}}; border:1px solid {{dacolor[91]}}; border-radius: 20px; width: 40px; " class="paperid_number">92</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="93" style=" background-color:{{idcolor[92]}}; border:1px solid {{dacolor[92]}}; border-radius: 20px; width: 40px; " class="paperid_number">93</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="94" style=" background-color:{{idcolor[93]}}; border:1px solid {{dacolor[93]}}; border-radius: 20px; width: 40px; " class="paperid_number">94</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="95" style=" background-color:{{idcolor[94]}}; border:1px solid {{dacolor[94]}}; border-radius: 20px; width: 40px; " class="paperid_number">95</view>
+    </view>														   
+  </view>														   
+  </view>														   
+  <view style="height: 12px;" wx:if="{{(idcolor[96])}}" ></view>											   
+															   
+   <view style="width: 100%; " wx:if="{{(idcolor[96])}}" >												   
+  <view style=" width: 98%; overflow: hidden; display:table; padding-left: 2%;">					   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="96" style=" background-color:{{idcolor[95]}}; border:1px solid {{dacolor[95]}}; border-radius: 20px; width: 40px; " class="paperid_number">96</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="97" style=" background-color:{{idcolor[96]}}; border:1px solid {{dacolor[96]}}; border-radius: 20px; width: 40px; " class="paperid_number">97</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="98" style=" background-color:{{idcolor[97]}}; border:1px solid {{dacolor[97]}}; border-radius: 20px; width: 40px; " class="paperid_number">98</view>
+    </view>														   
+    <view class="paperid_view">												   
+      <view  bindtap="click_paper_no" data-idx="99" style=" background-color:{{idcolor[98]}}; border:1px solid {{dacolor[98]}}; border-radius: 20px; width: 40px; " class="paperid_number">99</view>
+    </view>
+    <view class="paperid_view">
+      <view  bindtap="click_paper_no" data-idx="100" style=" background-color:{{idcolor[99]}}; border:1px solid {{dacolor[99]}}; border-radius: 20px; width: 40px; " class="paperid_number">100</view>
+    </view>
+  </view>
+  </view>
+  <view style="height: 12px;"></view>
+
+</scroll-view>
+
+
+
+<view style="position:absolute; bottom: 0px; height: 44px; background-color:#FFFFFF; width: 100%; overflow: hidden; border-top: 1px solid #E0E0E0;">
+  <view style="float: left; width: 25%; height: 44px; background-color:#FFFFFF; display: inline-block;" bindtap="click_pause">
+    <view style=" float: left; width: 50%; height: 44px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 8px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/{{button_pause}}"></image>
+    </view>
+    <view style=" float: right; width: 50%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 44px; color:{{color_pause}};">
+      {{text_pause}}
+    </view>
+  </view>
+  <view wx:if="{{(!doPause)}}" style="width: 25%; height: 44px; background-color:#FFFFFF; display: inline-block;" bindtap="click_idlist">
+    <view style=" float: left; width: 50%; height: 44px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 8px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/{{button_idlist}}"></image>
+    </view>
+    <view style=" float: right; width: 50%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 44px; color:{{color_idlist}};">
+      试题
+    </view>
+  </view>
+  <view wx:if="{{(!doPause)}}" style="width: 25%; height: 44px; background-color:#FFFFFF; display: inline-block;" bindtap="click_submit">
+    <view style=" float: left; width: 50%; height: 44px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 8px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/paper.submit.png"></image>
+    </view>
+    <view style=" float: right; width: 50%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 44px; color:#666666;">
+      交卷
+    </view>
+  </view>
+  <view style="float: right; width: 25%; height: 44px; text-align: left; background-color:#FFFFFF; line-height: 40px; font-size: 24px; font-weight: bold; color:#FF0000; display: inline-block;" bindtap="click_examIDList">
+       {{timelimit}}
+  </view>
+</view>

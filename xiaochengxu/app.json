@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/shebei/shebei",
+    "pages/doctors/doctors",
+    "pages/index/index",
+    "pages/aboutus/aboutus",
+    "pages/luxian/luxian"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "南昌莱美整形美容医院",
+    "navigationBarTextStyle": "#fff"
+  }
+}

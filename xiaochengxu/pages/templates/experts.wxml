@@ -1,0 +1,22 @@
+<import src="../templates/foot.wxml"/>
+<template name='experts'>
+<view  style='width:90%;margin: auto;padding-top:40rpx;'>
+<button type="primary" style='background:#937344;'  
+        > <text style='font-size:50rpx;'>点击咨询</text>  </button>
+        </view>
+<swiper  style='width:100%;height:596rpx;margin-top:20rpx;' indicator-dots="{{true}}"
+  autoplay="{{true}}" interval="{{2000}}" duration="{{500}}" indicator-active-color=' #ee0324' indicator-color="#fff">
+  <block wx:for="{{arr1}}" wx:key="property"  >
+    <swiper-item>
+      <image style='width:100%;height:596rpx;' src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+    </block>
+</swiper>
+<button style='margin-top:30px;'>猜你喜欢</button>
+  <view class='flex' style='justify-content:  space-between;width:92%;margin:20px auto;flex-wrap:wrap;'>
+    <block wx:for="{{arr2}}" wx:key="property"  >
+    <view><image class='imgt' src='{{item}}'></image></view>
+    </block>
+  </view>
+<template is='foot'/>
+</template>  

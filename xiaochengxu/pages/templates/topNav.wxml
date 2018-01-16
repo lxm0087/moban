@@ -1,0 +1,12 @@
+<template name='topNav'>
+<view class='nav-box'>
+  <navigator class='nav' url="{{url}}" bindtap='showSanJiao' data-id='{{id}}' open-type="navigate">{{name}}</navigator>
+  <view class='xiaosanjiao' wx:if="{{navShow}}"></view>
+</view>
+
+   <!-- <navigator url=''>首页</navigator> -->
+  <!-- <navigator url="../aboutus/aboutus" open-type="navigate">品牌中心</navigator> -->
+  <!-- <navigator>医生团队</navigator>
+  <navigator>尖端设备</navigator>
+  <navigator>来院路线</navigator>  -->
+</template>

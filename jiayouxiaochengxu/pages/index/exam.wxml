@@ -1,0 +1,174 @@
+<!--exam.wxml-->
+
+
+<swiper wx:if="{{Reload}}" duration="500" style="height: {{pageHeight}}px; " bindchange="swiper_change">
+
+
+  <block wx:for-items="{{examList}}" wx:key="id" style="background-color:#FFFFFF;" >
+
+
+  <swiper-item style="display: block; background-color:#FFFFFF; overflow: auto; ">
+
+
+    <view style="background: #FFFFFF; " data-hash="{{item.id}}">
+ 
+
+      <view style="padding: 10px; line-height: 24px; "><text>{{item.idx}} {{item.t}}</text></view>
+      <view wx:if="{{item.isrc && item.isrc.length >= 1}}" style="display: block; "><image style="width:100%" src="http://www.jyouw.cn/img/{{item.isrc}}" style=" width:100%; height: 170px; display:block; overflow:hidden;"></image></view>
+      <view wx:if="{{item.vsrc && item.vsrc.length >= 1}}" style="display: block; "><video style="width:100%" src="http://www.jyouw.cn/img/{{item.vsrc}}" controls></video></view>
+      <view style="background:{{showQA_A_BG}}; padding: 18px; border-top: 1px solid #F9F9F9; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px; " bindtap="click_answer_a" wx:if="{{(item.q[0])}}">{{item.q[0]}}</view>
+      <view style="background:{{showQA_B_BG}}; padding: 18px; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px;" bindtap="click_answer_b" wx:if="{{(item.q[1])}}">{{item.q[1]}}</view>
+      <view style="background:{{showQA_C_BG}}; padding: 18px; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px;" bindtap="click_answer_c" wx:if="{{(item.q[2])}}">{{item.q[2]}}</view>
+      <view style="background:{{showQA_D_BG}}; padding: 18px; border-bottom: 1px solid #F9F9F9; color:#999999; font-size: 14px;" bindtap="click_answer_d" wx:if="{{(item.q[3])}}">{{item.q[3]}}</view>
+
+      <view style="background:#FFFFFF; padding: 18px; text-align: center; color:#FFFFFF; font-size: 16px;" bindtap="click_submit_duoxuan" wx:if="{{(item.tp==2)}}">
+        <view style="background:#00b008; border-radius: 6px; padding: 16px; text-align: center; color:#FFFFFF; font-size: 16px;" wx:if="true">提交复选题</view>
+      </view>
+
+      <view style="background:#FFFFFF; padding: 20px 20px 0px 20px; font-size: 14px; color:{{answer_color}}; line-height: 18px;" wx:if="{{answer_show[item.idx - 1] || showQA}}">
+        <text>答案 {{item.a}} </text>
+      </view>
+      <view style="background:#FFFFFF; padding: 10px 20px 20px 20px; font-size: 14px; color:#999999; line-height: 18px;" wx:if="{{answer_show[item.idx - 1] || showQA}}">
+        <text>{{item.qa}}</text>
+      </view>
+
+    </view>
+
+
+
+  </swiper-item>
+
+
+  </block>
+
+
+
+</swiper>  
+
+
+
+
+
+<scroll-view wx:if="{{showPG}}" scroll-y="true" style="position:absolute; padding: 5%; background-color:#FFFFFF; top: 0px; width: 90%; left: 0px; height:{{scrollHeight}}px; overflow: hidden;  text-align: center;">
+  <view style="height: 12px;"></view>
+  <view wx:if="{{swiper_show_page0}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="0" bindtap="exam_load_next">{{button_load_next0}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page0}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page1}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="1" bindtap="exam_load_next">{{button_load_next1}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page1}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page2}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="2" bindtap="exam_load_next">{{button_load_next2}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page2}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page3}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="3" bindtap="exam_load_next">{{button_load_next3}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page3}}" style="height: 12px;"></view>
+  
+  <view wx:if="{{swiper_show_page4}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="4" bindtap="exam_load_next">{{button_load_next4}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page4}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page5}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="5" bindtap="exam_load_next">{{button_load_next5}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page5}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page6}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="6" bindtap="exam_load_next">{{button_load_next6}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page6}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page7}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="7" bindtap="exam_load_next">{{button_load_next7}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page7}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page8}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="8" bindtap="exam_load_next">{{button_load_next8}}</view>
+  </view> 
+  <view wx:if="{{swiper_show_page8}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page9}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="9" bindtap="exam_load_next">{{button_load_next9}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page9}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page10}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="10" bindtap="exam_load_next">{{button_load_next10}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page10}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page11}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="11" bindtap="exam_load_next">{{button_load_next11}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page11}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page12}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="12" bindtap="exam_load_next">{{button_load_next12}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page12}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page13}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="13" bindtap="exam_load_next">{{button_load_next13}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page13}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page14}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="14" bindtap="exam_load_next">{{button_load_next14}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page14}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page15}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="15" bindtap="exam_load_next">{{button_load_next15}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page15}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page16}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="16" bindtap="exam_load_next">{{button_load_next16}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page16}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page17}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="17" bindtap="exam_load_next">{{button_load_next17}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page17}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page18}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="18" bindtap="exam_load_next">{{button_load_next18}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page18}}" style="height: 12px;"></view>
+
+  <view wx:if="{{swiper_show_page19}}" style="width: 100%; font-size: 12px;">
+    <view style="background-color:#F0F0F0; color:#999999; font-size: 14px; padding: 10px; border-radius: 6px; " data-p="19" bindtap="exam_load_next">{{button_load_next19}}</view>
+  </view>
+  <view wx:if="{{swiper_show_page19}}" style="height: 12px;"></view>
+
+  <view style="height: 24px;"></view>
+</scroll-view>
+
+<view style="position:absolute; bottom: 0px; height: 44px; background-color:#FFFFFF; width: 100%; overflow: hidden; border-top: 1px solid #F0F0F0;">
+  <view style="float: left; width: 50%; height: 44px; background-color:#FFFFFF; display: inline-block;" bindtap="click_showQA">
+    <view style=" float: left; width: 40%; height: 44px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 8px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/{{showQA_image}}.png"></image>
+    </view>
+    <view style=" float: right; width: 60%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 44px; color:{{showQA_color}};">
+      学习模式
+    </view>
+  </view>
+  <view style="float: right; width: 49%; height: 44px; background-color:#FFFFFF; display: inline-block;" bindtap="click_examIDList">
+    <view style=" float: left; width: 40%; height: 44px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 8px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/list.png"></image>
+    </view>
+    <view style=" float: right; width: 60%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 44px; color:#666666;">
+      试题总览
+    </view>
+  </view>
+</view>

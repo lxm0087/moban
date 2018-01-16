@@ -1,0 +1,5 @@
+<view class='wel-container'>
+  <image class='headimg' src='../images/1.jpg'></image>
+  <text class='tit'>hello,小宝</text>
+  <button class='btn' plain='true' bindtap='zhuang'>开启小程序之旅</button>
+</view>

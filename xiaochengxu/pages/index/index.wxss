@@ -1,0 +1,44 @@
+@import "../templates/foot.wxss";
+.text-bg{background:#ccc;}
+.p{font-size:30rpx;color:#fff;padding-left:42rpx;}
+.nav_item{display: flex;justify-content: space-around;}
+.nav_item image{
+  display: block;
+  width:100rpx;
+  height:135rpx;
+  padding: 30rpx;
+}
+.hotxm{
+  width: 100%;
+  height: 60rpx;
+  background: #eaeaea;
+}
+.rand::before{
+    content: url('http://www.nclaimei.com/MobileCom/images/rand.png');
+    width: 5rpx;
+    height: 11rpx; 
+    position: relative;
+    top:5rpx;
+    right: 10rpx;
+}
+.hotxm_show{width: 92%;display: flex;justify-content: space-between;margin: auto; flex-wrap: wrap;margin-top: 30rpx;}
+.hotxm text{font-size: 26rpx;line-height: 60rpx; }
+.t1{padding-left: 30rpx;}
+.t2{padding-left: 360rpx;}
+.hotxm_show image{width: 173rpx;height: 192rpx;outline:1rpx #ccc solid;}
+.anli{width: 88%;margin: 80rpx auto;height: 480rpx;}
+.anli image{height: 100%;}
+.anli.wx-swiper-dot{width: 4rpx ;height: 4rpx ;}
+.anli .wx-swiper-dots.wx-swiper-dots-horizontal{
+     margin-left: 180rpx;
+}
+.anli .wx-swiper-dot{
+    width:8rpx;
+    height:8rpx;
+}
+.zhuangjia{
+  height: 600rpx;
+}
+.zhuangjia image{width: 100%;height: 100%;}
+
+

@@ -1,0 +1,8 @@
+
+.subject_kemu1 { background:#00c217; padding: 4px; border-radius: 4px; font-size: 12px; color:#FFFFFF; }
+.subject_kemu4 { background:#00c217; padding: 4px; border-radius: 4px; font-size: 12px; color:#FFFFFF; }
+
+.subject_kemu {
+  background:#FFFFFF; padding: 12px; border-bottom: 1px dashed #E0E0E0; font-size: 12px; font-weight: bold; color: #999999; display: none; 
+
+}

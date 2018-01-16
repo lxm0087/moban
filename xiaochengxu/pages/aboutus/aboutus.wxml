@@ -1,0 +1,32 @@
+ <import src="../templates/topNav.wxml"/>
+ <import src="../templates/experts.wxml"/>
+ <view class='flex-col'>
+    <view class='navbg'>
+    <block wx:for="{{navList}}" wx:key="{{index}}"><template is='topNav' data='{{...item}}'/></block>
+    </view>
+    <view class='aimg' style='height:460rpx;'><image            src='http://www.nclaimei.com/d/file/MobileCom/mnav/topnav/2017-06-18/edef8a5b9f2f30ae706d106226aa9a83.png'></image></view>
+    <view class='introduce'>
+    <text class='t1'>南昌莱美美容医院，源自韩国的国际医学美容连锁品牌,隶属韩国APOTRE集团，总部设立在北京，2010年入驻江西南昌，目前旗下拥有8家医学美容连锁分支机构，业务范围遍布中韩等亚洲地区，是目前国内*具规模及影响力的高端整形美容品牌。典雅的环境，尊崇的个性化服务，无与伦比的技术及效果，已成为明星名媛的首选机构。</text>
+    <rich-text class='t2'   nodes="{{nodes}}" />
+    <text decode='true'>
+    &emsp;&emsp;莱美整形作为亚太地区提供高端医学美容服务的顶级品牌，引领韩国二十多年整形风潮，秉承韩国整形之精髓，兼收并蓄各国审美理念，专注探索医学美容科技新知，并致力于将高新科技应用于抗衰老、非手术美容、整形美容、皮肤美容、口腔美容、生活美容等领域，努力创造分享美的哲学，始终为顾客提供*为领先、时尚、安全、可靠的医学美容服务，开创中国医学美容新篇章。
+    </text>
+    <view class='pad4' > 
+  <rich-text class='t2'   nodes="{{nodes1}}" />
+  <image style='height:180rpx;padding-top:20px;'src='http://www.nclaimei.com/d/file/MobileCom/mnav/topnav/2017-06-18/9bbd35f9e8a94764b0db0990a23e43f4.jpg'></image>
+<text style='display:block;padding-top:20px;'>莱美整形作为亚太地区提供高端医学美容服务的顶级品牌，引领韩国二十多年整形风潮，秉承韩国整形之精髓，兼收并蓄各国审美理念，专注探索医学美容科技新知，并致力于将高新科技应用于抗衰老、非手术美容、整形美容、皮肤美容、口腔美容、生活美容等领域，努力创造分享美的哲学，始终为顾客提供*为领先、时尚、安全、可靠的医学美容服务，开创中国医学美容新篇章。</text>
+  </view> 
+  <view class='pad4'>
+      <rich-text class='t2'   nodes="{{nodes2}}" />
+            <text style='display:block;padding-top:20px;'>莱美整形在中国拥有超大阵容的国际医师部，不仅汇集了杨期耀院长、沈胡干院长、郭小楼教师、沈干教授、王志军教授等多位国际大师级医学美容领军人物，更汇聚了100多位来自韩国、日本、美国、中国台湾等国家与地区的学术高超、技术顶尖、经验丰富的专家成员，在业界享有极高声誉，已成为行业翘楚。 莱美不仅拥有多项**技术，更与世界多家知名科研机构强强联手，打造出一系列引领国际潮流的高端整形美容科技。独有的形象设计中心，在国内首倡“整体化形象设计”，由资深美学专家量身定制个性服务，使您享受由内而外的优雅蜕变。</text>
+  </view>
+    </view>
+  <view class='pad4'>
+  <image style='width:100%;' src='http://www.nclaimei.com/d/file/MobileCom/mnav/topnav/2017-06-18/690ff9535116aa43ebc65add8508337f.png'></image>
+  </view>
+<template is='experts' data="{{arr1:arr1,arr2:arr2}}"></template>
+ </view>
+
+ 
+ 
+

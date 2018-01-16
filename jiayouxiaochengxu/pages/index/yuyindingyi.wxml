@@ -1,0 +1,441 @@
+<view style="height: {{scrollHeight + 44 - 200}}px; " >
+  <map id="mymap" longitude="{{my_long}}" latitude="{{my_lat}}" scale="16" controls="{{map_controls}}" markers="{{map_markers}}" show-location="false" style="width: 100%; height: {{scrollHeight + 44 - 240}}px;" bindregionchange="reset_markers" polyline="{{map_polylines}}" ></map>
+</view>
+
+
+
+<view  style="width: 100%; background-color: #F9F9F9; height: 240px; bottom: 0px; position: fixed; font-size: 10px; color: #333333;">
+
+<view style="width: 100%; background-color: #F9F9F9; height: 40px; line-height: 40px; font-size: 13px; color: #666666; text-align: center; overflow: hidden;">
+
+  <view style="float: left; margin-left: 6px; margin-top: 6px; width: 80px;" bindtap="button_qiehuanmoshi">
+    <view style="background-color: #50bd24; color:#FFFFFF; height: 20px; line-height: 20px; border-radius: 6px; padding: 4px; font-size: 12px; text-align: center; ">
+      列表/编辑
+    </view>
+  </view>
+ 
+     {{label_map_center_longlat}}
+ 
+  <view style=" float: right; margin-right: 6px; margin-top: 6px; width: 80px;" bindtap="button_baocunxianlu">
+    <view style="background-color: #50bd24; color:#FFFFFF; height: 20px; line-height: 20px; border-radius: 6px; padding: 4px; font-size: 12px; text-align: center; ">
+      保存路线
+    </view>
+  </view>
+
+</view>
+
+
+
+<scroll-view scroll-y="true" style="height: 200px; background-color:#FFFFFF;" wx:if="{{(mode_list == 'liebiao')}}" >
+  <view wx:for="{{xianlu_list}}" wx:key="shunxu" wx:for-item="items" style="padding: 10px; border-bottom: 1px solid #F9F9F9; overflow: hidden; position:relative; display: fixed; ">
+    <view wx:if="{{items.shunxu<= 34}}" style="float: left; width: 36px; height: 36px;">
+      <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/map.markers.{{items.shunxu+1}}.png"></image>
+    </view>
+    <view wx:else style="float: left; width: 36px; height: 36px;">
+      <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/map.markers.0.png"></image>
+    </view>
+    <view style="float: left; height: 36px; line-height: 36px; font-size: 14px; ">{{items.title}}</view>
+
+    <view style="float: right; margin-top: 6px; width: 32px; height: 32px;" data-sx="{{items.shunxu}}" data-id="{{items.id}}" data-do="down" bindtap="click_liebiao">
+      <image style=" width: 23px; height: 24px; " mode="aspectFit" src="../../images/icon.yuyin.bianji.down.png"></image>
+    </view>
+    <view style="float: right; margin-top: 6px; width: 32px; height: 32px;" data-sx="{{items.shunxu}}" data-id="{{items.id}}" data-do="up" bindtap="click_liebiao">
+      <image style=" width: 23px; height: 24px; " mode="aspectFit" src="../../images/icon.yuyin.bianji.up.png"></image>
+    </view>
+    <view style="float: right; margin-top: 6px; width: 32px; height: 32px;" data-sx="{{items.shunxu}}" data-id="{{items.id}}" data-do="del" bindtap="click_liebiao">
+      <image style=" width: 23px; height: 24px; " mode="aspectFit" src="../../images/icon.yuyin.bianji.del.png"></image>
+    </view>
+
+  </view>
+</scroll-view>
+
+<scroll-view scroll-y="true" style="height: 200px;  background-color:#FFFFFF;"  wx:if="{{(mode_list == 'yuyin')}}" >
+
+<!-- 日间模式 -->
+<view wx:if="{{(yuyin_baitian.length > 0)}}"> <!--第1行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 1)}}" data-leixing="rijian" data-id="{{yuyin_baitian[0].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[0].pic}}"></image>
+    <view>{{yuyin_baitian[0].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 2)}}" data-leixing="rijian" data-id="{{yuyin_baitian[1].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[1].pic}}"></image>
+    <view>{{yuyin_baitian[1].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 3)}}" data-leixing="rijian" data-id="{{yuyin_baitian[2].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[2].pic}}"></image>
+    <view>{{yuyin_baitian[2].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 4)}}" data-leixing="rijian" data-id="{{yuyin_baitian[3].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[3].pic}}"></image>
+    <view>{{yuyin_baitian[3].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 4)}}"> <!--第2行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 5)}}" data-leixing="rijian" data-id="{{yuyin_baitian[4].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[4].pic}}"></image>
+    <view>{{yuyin_baitian[4].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 6)}}" data-leixing="rijian" data-id="{{yuyin_baitian[5].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[5].pic}}"></image>
+    <view>{{yuyin_baitian[5].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 7)}}" data-leixing="rijian" data-id="{{yuyin_baitian[6].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[6].pic}}"></image>
+    <view>{{yuyin_baitian[6].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 8)}}" data-leixing="rijian" data-id="{{yuyin_baitian[7].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[7].pic}}"></image>
+    <view>{{yuyin_baitian[7].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 8)}}"> <!--第3行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 9)}}" data-leixing="rijian" data-id="{{yuyin_baitian[8].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[8].pic}}"></image>
+    <view>{{yuyin_baitian[8].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 10)}}" data-leixing="rijian" data-id="{{yuyin_baitian[9].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[9].pic}}"></image>
+    <view>{{yuyin_baitian[9].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 11)}}" data-leixing="rijian" data-id="{{yuyin_baitian[10].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[10].pic}}"></image>
+    <view>{{yuyin_baitian[10].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 12)}}" data-leixing="rijian" data-id="{{yuyin_baitian[11].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[11].pic}}"></image>
+    <view>{{yuyin_baitian[11].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 12)}}"> <!--第4行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 13)}}" data-leixing="rijian" data-id="{{yuyin_baitian[12].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[12].pic}}"></image>
+    <view>{{yuyin_baitian[12].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 14)}}" data-leixing="rijian" data-id="{{yuyin_baitian[13].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[13].pic}}"></image>
+    <view>{{yuyin_baitian[13].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 15)}}" data-leixing="rijian" data-id="{{yuyin_baitian[14].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[14].pic}}"></image>
+    <view>{{yuyin_baitian[14].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 16)}}" data-leixing="rijian" data-id="{{yuyin_baitian[15].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[15].pic}}"></image>
+    <view>{{yuyin_baitian[15].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 16)}}"> <!--第5行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 17)}}" data-leixing="rijian" data-id="{{yuyin_baitian[16].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[16].pic}}"></image>
+    <view>{{yuyin_baitian[16].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 18)}}" data-leixing="rijian" data-id="{{yuyin_baitian[17].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[17].pic}}"></image>
+    <view>{{yuyin_baitian[17].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 19)}}" data-leixing="rijian" data-id="{{yuyin_baitian[18].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[18].pic}}"></image>
+    <view>{{yuyin_baitian[18].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 20)}}" data-leixing="rijian" data-id="{{yuyin_baitian[19].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[19].pic}}"></image>
+    <view>{{yuyin_baitian[19].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 20)}}"> <!--第6行四个按钮-->
+  <view class="button_yuyin"  wx:if="{{(yuyin_baitian.length >= 21)}}" data-leixing="rijian" data-id="{{yuyin_baitian[20].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[20].pic}}"></image>
+    <view>{{yuyin_baitian[20].title}}</view>
+  </view>
+  <view class="button_yuyin"  wx:if="{{(yuyin_baitian.length >= 22)}}" data-leixing="rijian" data-id="{{yuyin_baitian[21].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[21].pic}}"></image>
+    <view>{{yuyin_baitian[21].title}}</view>
+  </view>
+  <view class="button_yuyin"  wx:if="{{(yuyin_baitian.length >= 23)}}" data-leixing="rijian" data-id="{{yuyin_baitian[22].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[22].pic}}"></image>
+    <view>{{yuyin_baitian[22].title}}</view>
+  </view>
+  <view class="button_yuyin"  wx:if="{{(yuyin_baitian.length >= 24)}}" data-leixing="rijian" data-id="{{yuyin_baitian[23].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[23].pic}}"></image>
+    <view>{{yuyin_baitian[23].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 24)}}"> <!--第7行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 25)}}" data-leixing="rijian" data-id="{{yuyin_baitian[24].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[24].pic}}"></image>
+    <view>{{yuyin_baitian[24].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 26)}}" data-leixing="rijian" data-id="{{yuyin_baitian[25].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[25].pic}}"></image>
+    <view>{{yuyin_baitian[25].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 27)}}" data-leixing="rijian" data-id="{{yuyin_baitian[26].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[26].pic}}"></image>
+    <view>{{yuyin_baitian[26].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 28)}}" data-leixing="rijian" data-id="{{yuyin_baitian[27].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[27].pic}}"></image>
+    <view>{{yuyin_baitian[27].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 28)}}"> <!--第8行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 29)}}" data-leixing="rijian" data-id="{{yuyin_baitian[28].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[28].pic}}"></image>
+    <view>{{yuyin_baitian[28].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 30)}}" data-leixing="rijian" data-id="{{yuyin_baitian[29].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[29].pic}}"></image>
+    <view>{{yuyin_baitian[29].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 31)}}" data-leixing="rijian" data-id="{{yuyin_baitian[30].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[30].pic}}"></image>
+    <view>{{yuyin_baitian[30].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 32)}}" data-leixing="rijian" data-id="{{yuyin_baitian[31].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[31].pic}}"></image>
+    <view>{{yuyin_baitian[31].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 32)}}"> <!--第9行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 33)}}" data-leixing="rijian" data-id="{{yuyin_baitian[32].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[32].pic}}"></image>
+    <view>{{yuyin_baitian[32].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 34)}}" data-leixing="rijian" data-id="{{yuyin_baitian[33].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[33].pic}}"></image>
+    <view>{{yuyin_baitian[33].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 35)}}" data-leixing="rijian" data-id="{{yuyin_baitian[34].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[34].pic}}"></image>
+    <view>{{yuyin_baitian[34].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 36)}}" data-leixing="rijian" data-id="{{yuyin_baitian[35].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[35].pic}}"></image>
+    <view>{{yuyin_baitian[35].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_baitian.length > 36)}}"> <!--第10行四个按钮-->
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 37)}}" data-leixing="rijian" data-id="{{yuyin_baitian[36].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[36].pic}}"></image>
+    <view>{{yuyin_baitian[36].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 38)}}" data-leixing="rijian" data-id="{{yuyin_baitian[37].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[37].pic}}"></image>
+    <view>{{yuyin_baitian[37].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 39)}}" data-leixing="rijian" data-id="{{yuyin_baitian[38].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[38].pic}}"></image>
+    <view>{{yuyin_baitian[38].title}}</view>
+  </view>
+  <view class="button_yuyin" wx:if="{{(yuyin_baitian.length >= 40)}}" data-leixing="rijian" data-id="{{yuyin_baitian[39].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_baitian[39].pic}}"></image>
+    <view>{{yuyin_baitian[39].title}}</view>
+  </view>
+</view>
+
+
+
+
+<!-- 夜间模式 -->
+<view wx:if="{{(yuyin_yejian.length > 0)}}"> <!--第1行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 1)}}" data-leixing="rijian" data-id="{{yuyin_yejian[0].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[0].pic}}"></image>
+    <view>{{yuyin_yejian[0].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 2)}}" data-leixing="rijian" data-id="{{yuyin_yejian[1].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[1].pic}}"></image>
+    <view>{{yuyin_yejian[1].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 3)}}" data-leixing="rijian" data-id="{{yuyin_yejian[2].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[2].pic}}"></image>
+    <view>{{yuyin_yejian[2].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 4)}}" data-leixing="rijian" data-id="{{yuyin_yejian[3].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[3].pic}}"></image>
+    <view>{{yuyin_yejian[3].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 4)}}"> <!--第2行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 5)}}" data-leixing="rijian" data-id="{{yuyin_yejian[4].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[4].pic}}"></image>
+    <view>{{yuyin_yejian[4].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 6)}}" data-leixing="rijian" data-id="{{yuyin_yejian[5].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[5].pic}}"></image>
+    <view>{{yuyin_yejian[5].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 7)}}" data-leixing="rijian" data-id="{{yuyin_yejian[6].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[6].pic}}"></image>
+    <view>{{yuyin_yejian[6].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 8)}}" data-leixing="rijian" data-id="{{yuyin_yejian[7].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[7].pic}}"></image>
+    <view>{{yuyin_yejian[7].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 8)}}"> <!--第3行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 9)}}" data-leixing="rijian" data-id="{{yuyin_yejian[8].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[8].pic}}"></image>
+    <view>{{yuyin_yejian[8].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 10)}}" data-leixing="rijian" data-id="{{yuyin_yejian[9].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[9].pic}}"></image>
+    <view>{{yuyin_yejian[9].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 11)}}" data-leixing="rijian" data-id="{{yuyin_yejian[10].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[10].pic}}"></image>
+    <view>{{yuyin_yejian[10].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 12)}}" data-leixing="rijian" data-id="{{yuyin_yejian[11].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[11].pic}}"></image>
+    <view>{{yuyin_yejian[11].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 12)}}"> <!--第4行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 13)}}" data-leixing="rijian" data-id="{{yuyin_yejian[12].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[12].pic}}"></image>
+    <view>{{yuyin_yejian[12].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 14)}}" data-leixing="rijian" data-id="{{yuyin_yejian[13].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[13].pic}}"></image>
+    <view>{{yuyin_yejian[13].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 15)}}" data-leixing="rijian" data-id="{{yuyin_yejian[14].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[14].pic}}"></image>
+    <view>{{yuyin_yejian[14].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 16)}}" data-leixing="rijian" data-id="{{yuyin_yejian[15].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[15].pic}}"></image>
+    <view>{{yuyin_yejian[15].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 16)}}"> <!--第5行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 17)}}" data-leixing="rijian" data-id="{{yuyin_yejian[16].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[16].pic}}"></image>
+    <view>{{yuyin_yejian[16].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 18)}}" data-leixing="rijian" data-id="{{yuyin_yejian[17].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[17].pic}}"></image>
+    <view>{{yuyin_yejian[17].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 19)}}" data-leixing="rijian" data-id="{{yuyin_yejian[18].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[18].pic}}"></image>
+    <view>{{yuyin_yejian[18].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 20)}}" data-leixing="rijian" data-id="{{yuyin_yejian[19].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[19].pic}}"></image>
+    <view>{{yuyin_yejian[19].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 20)}}"> <!--第6行四个按钮-->
+  <view class="button_yuyin_yejian"  wx:if="{{(yuyin_yejian.length >= 21)}}" data-leixing="rijian" data-id="{{yuyin_yejian[20].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[20].pic}}"></image>
+    <view>{{yuyin_yejian[20].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian"  wx:if="{{(yuyin_yejian.length >= 22)}}" data-leixing="rijian" data-id="{{yuyin_yejian[21].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[21].pic}}"></image>
+    <view>{{yuyin_yejian[21].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian"  wx:if="{{(yuyin_yejian.length >= 23)}}" data-leixing="rijian" data-id="{{yuyin_yejian[22].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[22].pic}}"></image>
+    <view>{{yuyin_yejian[22].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian"  wx:if="{{(yuyin_yejian.length >= 24)}}" data-leixing="rijian" data-id="{{yuyin_yejian[23].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[23].pic}}"></image>
+    <view>{{yuyin_yejian[23].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 24)}}"> <!--第7行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 25)}}" data-leixing="rijian" data-id="{{yuyin_yejian[24].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[24].pic}}"></image>
+    <view>{{yuyin_yejian[24].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 26)}}" data-leixing="rijian" data-id="{{yuyin_yejian[25].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[25].pic}}"></image>
+    <view>{{yuyin_yejian[25].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 27)}}" data-leixing="rijian" data-id="{{yuyin_yejian[26].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[26].pic}}"></image>
+    <view>{{yuyin_yejian[26].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 28)}}" data-leixing="rijian" data-id="{{yuyin_yejian[27].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[27].pic}}"></image>
+    <view>{{yuyin_yejian[27].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 28)}}"> <!--第8行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 29)}}" data-leixing="rijian" data-id="{{yuyin_yejian[28].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[28].pic}}"></image>
+    <view>{{yuyin_yejian[28].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 30)}}" data-leixing="rijian" data-id="{{yuyin_yejian[29].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[29].pic}}"></image>
+    <view>{{yuyin_yejian[29].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 31)}}" data-leixing="rijian" data-id="{{yuyin_yejian[30].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[30].pic}}"></image>
+    <view>{{yuyin_yejian[30].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 32)}}" data-leixing="rijian" data-id="{{yuyin_yejian[31].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[31].pic}}"></image>
+    <view>{{yuyin_yejian[31].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 32)}}"> <!--第9行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 33)}}" data-leixing="rijian" data-id="{{yuyin_yejian[32].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[32].pic}}"></image>
+    <view>{{yuyin_yejian[32].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 34)}}" data-leixing="rijian" data-id="{{yuyin_yejian[33].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[33].pic}}"></image>
+    <view>{{yuyin_yejian[33].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 35)}}" data-leixing="rijian" data-id="{{yuyin_yejian[34].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[34].pic}}"></image>
+    <view>{{yuyin_yejian[34].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 36)}}" data-leixing="rijian" data-id="{{yuyin_yejian[35].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[35].pic}}"></image>
+    <view>{{yuyin_yejian[35].title}}</view>
+  </view>
+</view>
+
+<view wx:if="{{(yuyin_yejian.length > 36)}}"> <!--第10行四个按钮-->
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 37)}}" data-leixing="rijian" data-id="{{yuyin_yejian[36].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[36].pic}}"></image>
+    <view>{{yuyin_yejian[36].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 38)}}" data-leixing="rijian" data-id="{{yuyin_yejian[37].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[37].pic}}"></image>
+    <view>{{yuyin_yejian[37].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 39)}}" data-leixing="rijian" data-id="{{yuyin_yejian[38].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[38].pic}}"></image>
+    <view>{{yuyin_yejian[38].title}}</view>
+  </view>
+  <view class="button_yuyin_yejian" wx:if="{{(yuyin_yejian.length >= 40)}}" data-leixing="rijian" data-id="{{yuyin_yejian[39].id}}" bindtap="click_yuyin">
+    <image style=" width: 32px; height: 32px; " mode="aspectFit" src="{{yuyin_mulu}}{{yuyin_yejian[39].pic}}"></image>
+    <view>{{yuyin_yejian[39].title}}</view>
+  </view>
+</view>
+
+</scroll-view>
+
+</view>

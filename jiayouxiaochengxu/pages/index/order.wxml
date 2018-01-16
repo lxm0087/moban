@@ -1,0 +1,127 @@
+
+<view style="width: 100%; background-color:#FFFFFF; z-index: 100; height: 70px; overflow: hidden; ">
+  <view style="width: 15%; background-color:#FFFFFF;  float: left; text-align: center; height: 34px; padding: 6px 6px 4px 10px; ">
+    <image src="{{jiaolian_touxiang}}" mode="aspectFit" style="width: 48px; height: 48px; border-radius: 6px; " ></image>
+  </view>
+  <view style="width: 60%; padding: 4px; background-color:#FFFFFF; float: left; color:#999999; font-size: 14px; font-weight: bold; ">
+    <view style=" padding: 1px; "><label style="color: #666666; font-size: 16px; font-weight: bold; ">{{jiaolian_xingming}}</label> 
+    <label style="padding-left: 4px; color: #ffd701; font-size: 12px; ">{{jiaolian_jibie}}</label></view>
+    <view style=" padding: 1px; color: #999999; font-size: 12px;  font-weight:normal; ">{{jiaolian_chepai}}</view>
+    <view wx:if="{{(dingdan_zhuangtai!='s')}}" style=" padding-top: 1px; padding-right: 8px; line-height: 14px; float: left;">
+      <image wx:if="{{(jiaolian_pingfen >= 1)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 2)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 3)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 4)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen >= 5)}}" src="../../images/star.2.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+      <image wx:if="{{(jiaolian_pingfen_half)}}" src="../../images/star.1.png" mode="aspectFit"style="padding-top: 2px; width: 12px; height: 12px; " ></image>
+    </view>
+    <label  wx:if="{{(dingdan_zhuangtai!='s')}}" style="background-color: #ffd701; padding: 2px 4px 2px 4px; border-radius: 4px; font-size: 11px; font-weight: normal; color: #FFFFFF;">{{jiaolian_pingfen}}</label>
+  </view>
+  <view style="width: 10%; background-color:#FFFFFF; text-align: center; float: right; height: 34px; padding: 16px 10px 0px 10px; ">
+    <image src="../../images/order.callto.png" mode="aspectFit"style="width: 32px; height: 32px; " bindtap="makecallto"></image>
+  </view>
+</view>
+
+
+<!--审核中-->
+<view wx:if="{{order_step_shenheing}}"  style="z-index: 10; filter:alpha(opacity={{(_times)}}); -moz-opacity:{{(_times/100)}}; opacity:{{(_times/100)}};  top: {{show_waitting_top}}px; position:absolute; width: 100%; ">
+  <view style="background-color: #FFFFFF; padding: 0px 20px 10px 20px; overflow: hidden;">
+    <view style="background-color: #FFFFFF; height: 20px; overflow: hidden; position:relative;">
+      <view style="width: 25%; text-align: center; color: #D9D9D9; height: 20px; line-height:20px; left:0; right:0; z-index:2; background:#fff; display:inline-block; margin:0 auto; position:absolute; font-size: 12px; padding: 4px 6px 4px 6px;">
+      {{order_step}}
+      </view>
+      <view style=" border-bottom: 1px solid #f7f7f7; height: 12px;"></view>
+    </view>
+  </view>
+  <view style="background-color:#FFFFFF; text-align: center; padding: 10px; ">
+    <image src="../../images/order.shenheing.jpg" mode="aspectFit" style="width: 100px; height: 100px; padding: 10px; " ></image>
+    <view style="color:#50bd24; font-size: 12px; text-align: center; padding: 4px; ">
+      正在审核中
+    </view>
+    <view style="color:#666666; font-size: 12px; text-align: center; padding: 4px; ">
+      我们将在十分钟之内与您联系
+    </view>
+  </view>
+  <view style=" height: 10px; "></view>
+</view>
+
+
+<!--等待上车-->
+<view wx:if="{{order_step_waitting}}"  style="z-index: 10; filter:alpha(opacity={{(_times)}}); -moz-opacity:{{(_times/100)}}; opacity:{{(_times/100)}};  top: {{show_waitting_top}}px; position:absolute; width: 100%; ">
+  <view style="background-color: #FFFFFF; padding: 0px 20px 10px 20px; overflow: hidden;">
+    <view style="background-color: #FFFFFF; height: 20px; overflow: hidden; position:relative;">
+      <view style="width: 25%; text-align: center; color: #D9D9D9; height: 20px; line-height:20px; left:0; right:0; z-index:2; background:#fff; display:inline-block; margin:0 auto; position:absolute; font-size: 12px; padding: 4px 6px 4px 6px;">
+      {{order_step}}
+      </view>
+      <view style=" border-bottom: 1px solid #f7f7f7; height: 12px;"></view>
+    </view>
+  </view>
+  <view style="background-color:#FFFFFF; text-align: center; padding: 10px; ">
+    <image src="../../images/order.waitting.jpg" mode="aspectFit" style="width: 100px; height: 100px; padding: 10px; " ></image>
+    <view style="color:#50bd24; font-size: 12px; text-align: center; padding: 4px; ">
+      教练正在接您的路上
+    </view>
+    <view style="color:#666666; font-size: 12px; text-align: center; padding: 4px; ">
+      预计到达时间 14:31
+    </view>
+  </view>
+  <view style=" height: 10px; "></view>
+  <view style="padding: 10px; ">
+    <view bindtap="click_goto_clocking" style="background-color: #50bd24; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;">
+      确认上车{{button_shangche}}
+    </view>
+  </view>
+</view>
+
+
+<!--开始练车-->
+<view animation="{{animation_clocking}}" wx:if="{{order_step_clocking}}" style="z-index: 1; filter:alpha(opacity={{(_times)}}); -moz-opacity:{{(_times/100)}}; opacity:{{(_times/100)}}; top: {{show_clocking_top}}px; position:absolute; width: 100%; ">
+  <view style="background-color: #FFFFFF; padding: 0px 20px 10px 20px; overflow: hidden;">
+    <view style="background-color: #FFFFFF; height: 20px; overflow: hidden; position:relative;">
+      <view style="width: 25%; text-align: center; color: #D9D9D9; height: 20px; line-height:20px; left:0; right:0; z-index:2; background:#fff; display:inline-block; margin:0 auto; position:absolute; font-size: 12px; padding: 4px 6px 4px 6px;">
+      {{order_step}}
+      </view>
+      <view style=" border-bottom: 1px solid #f7f7f7; height: 12px;"></view>
+    </view>
+  </view>
+  <view style="background-color:#FFFFFF; text-align: center; padding: 10px; ">
+    <image src="../../images/order.clocking.jpg" mode="aspectFit" style="width: 100px; height: 100px; padding: 10px; " ></image>
+    <view style="color:#50bd24; font-size: 12px; text-align: center; padding: 4px; ">
+      到达目的地开始练车
+    </view>
+    <view style="color:#666666; font-size: 12px; text-align: center; padding: 4px; ">
+    </view>
+  </view>
+  <view style=" height: 10px; "></view>
+  <view style="padding: 10px; ">
+    <view bindtap="click_goto_doing" style="background-color: #50bd24; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;">
+      开始练车
+    </view>
+  </view>
+</view>
+
+<!--完成练习-->
+<view animation="{{animation_doing}}" wx:if="{{order_step_doing}}" style="filter:alpha(opacity={{(_times)}}); -moz-opacity:{{(_times/100)}}; opacity:{{(_times/100)}};  top: {{show_doing_top}}px; z-index: -10; position:absolute; width: 100%; ">
+  <view style="background-color: #FFFFFF; padding: 0px 20px 10px 20px; overflow: hidden;">
+    <view style="background-color: #FFFFFF; height: 20px; overflow: hidden; position:relative;">
+      <view style="width: 25%; text-align: center; color: #D9D9D9; height: 20px; line-height:20px; left:0; right:0; z-index:2; background:#fff; display:inline-block; margin:0 auto; position:absolute; font-size: 12px; padding: 4px 6px 4px 6px;">
+      {{order_step}}
+      </view>
+      <view style=" border-bottom: 1px solid #f7f7f7; height: 12px;"></view>
+    </view>
+  </view>
+  <view style="background-color:#FFFFFF; text-align: center; padding: 10px; ">
+    <image src="../../images/order.doing.jpg" mode="aspectFit" style="width: 100px; height: 100px; padding: 10px; " ></image>
+    <view style="color:#50bd24; font-size: 12px; text-align: center; padding: 4px; ">
+      正在苦练中 ...
+    </view>
+    <view style="color:#666666; font-size: 12px; text-align: center; padding: 4px; ">
+    </view>
+  </view>
+  <view style=" height: 10px; "></view>
+  <view style="padding: 10px; ">
+    <view bindtap="click_goto_pingjia" style="background-color: #50bd24; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;">
+      完成练习
+    </view>
+  </view>
+</view>

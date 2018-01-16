@@ -1,0 +1,27 @@
+.index-container{
+  width: 100%;
+}
+
+.search{
+  background: #f2f2f2;
+  width: 100%;
+  height: 80rpx;
+}
+
+.holdStyle{
+  color: #d1d1d1;
+  line-height: 25rpx;
+}
+
+.search-img{
+  width: 26rpx;
+  height: 26rpx;
+  margin: 26rpx;
+  vertical-align: top;
+}
+
+.ipt{
+  margin-left: 18rpx;
+  height: 80rpx;
+  font-size:25rpx;
+}

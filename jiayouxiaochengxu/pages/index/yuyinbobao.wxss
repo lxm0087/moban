@@ -1,0 +1,23 @@
+.button_yuyin {
+  width: 25%; 
+  float: left; 
+  background-color:#FFFFFF; 
+  height: 80px; 
+  box-sizing:border-box; 
+  border: 1px solid #FAFAFA; 
+  text-align: center; 
+  padding-top: 10px; 
+  line-height: 16px;
+} 
+
+.button_yuyin_yejian {
+  width: 25%; 
+  float: left; 
+  background-color:#F0F0F0; 
+  height: 80px; 
+  box-sizing:border-box; 
+  border: 1px solid #FAFAFA; 
+  text-align: center; 
+  padding-top: 10px; 
+  line-height: 16px;
+} 

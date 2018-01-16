@@ -1,0 +1,63 @@
+<!--pages/shebei/shebei.wxml-->
+<import src="../templates/topNav.wxml"/>
+<import src="../templates/experts.wxml"/>
+<view>
+  <view class='navbg'>
+  <block wx:for="{{navList}}" wx:key="{{id}}"><template is='topNav' data='{{...item}}'/></block>
+  </view>
+  <view class="flex flex-wrap flex-bw shebei-container" wx:if="{{listShow}}">
+
+    <view class="flex-item">
+      <view class='img-box'>
+        <image src="http://www.nclaimei.com/d/file/MobileCom/ymgl/sbxq/2017-03-31/c20f5a8cab3b523c3df16ff4d47a257f.jpg"></image>
+      </view>
+      <text>赛诺秀皮秒</text>
+      <button plain='{{true}}' bindtap="showShebei" size='mini'>点击了解+</button>
+    </view>
+
+    <view class="flex-item">
+      <view class='img-box'>
+        <image src="http://www.nclaimei.com/d/file/MobileCom/ymgl/sbxq/2017-03-31/c20f5a8cab3b523c3df16ff4d47a257f.jpg"></image>
+      </view>
+      <text>赛诺秀皮秒</text>
+      <button plain='{{true}}' size='mini'>点击了解+</button>
+    </view>
+
+    <view class="flex-item">
+      <view class='img-box'>
+        <image src="http://www.nclaimei.com/d/file/MobileCom/ymgl/sbxq/2017-03-31/c20f5a8cab3b523c3df16ff4d47a257f.jpg"></image>
+      </view>
+      <text>赛诺秀皮秒</text>
+      <button plain='{{true}}' size='mini'>点击了解+</button>
+    </view>
+  </view>
+  <view class="shebeiDetail flex-col" wx:if="{{!listShow}}">
+  <view class='tui' wx:if="{{!listShow}}"  bindtap='closeDetail'>
+      <image class='close-img' src='../img/2.png'></image>
+      <text  class='close-img' style='padding-left:6rpx;font-size:24rpx;' >返回</text>
+  </view>
+    <view class="part1 flex flex-bw">
+      <image src="http://www.nclaimei.com/d/file/MobileCom/ymgl/sbxq/2017-03-31/6641225ff5944b5196634cadb179017d.jpg"></image>
+      <view class='shebei-intor'>
+        <text class='shebei-tit' style='padding-bottom:25rpx;'>科医人“王者风范”全智能系统</text>
+        <text class='block'><text class='blod'>【产地】</text>：美国</text>
+        <text class='block'><text class='blod'>【品牌】</text>：科医人</text>
+        <text class='block'><text class='blod'>【适应症】</text>：面色暗沉、肤色不均、色斑等</text>
+      </view>
+    </view>
+    <view>
+      <text class='blod block mar2'>【多功能】</text>
+      <text>1、1个平台，3种技术，30多种预设参数，1500多种治疗组合 适合更广泛的临床适应症；
+  2、1个通用的IPL治疗头可轻松更换7种不同波长的滤光片；
+  3、可提供多种组合治疗方式，便于操作者发挥完美的治疗效果。
+  4、设有基本操作模式和高级操作模式；
+  5、智能触摸屏及方便易操作的用户界面，容易进行操作；
+  6、全自动记录患者治疗数据库，方便跟踪治疗和总结研究。
+  7、所有治疗头都可以达到1Hz 以上的重复频率，提高治疗速度；
+  8、蓝宝石晶体治疗头使用寿命长，减少后续费用；
+  9、可扩张的技术升级平台降低技术过时的风险。
+      </text>
+    </view>
+  </view>
+  <template is='experts' data="{{arr1:arr1,arr2:arr2}}"></template>
+</view>

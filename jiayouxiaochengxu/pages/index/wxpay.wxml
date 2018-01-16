@@ -1,0 +1,96 @@
+<view style=" background-color:#f3f3f3; height: 32px; line-height: 32px; color:#a9a9a9; font-weight: bold; font-size: 12px; text-align: left; padding-left: 6px; " bindtap="select_map">支付详情</view>
+
+<!--
+<view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " >
+  <view style=" padding: 0px 0px 0px 8px; width: 30%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+    约车科目
+  </view>
+  <view style="width: 65%; background-color:#FFFFFF; float: right; color:#59be30; line-height: 48px; height: 48px; font-size: 14px;  ">
+    {{selected_kemu_name}}
+  </view>
+</view>
+
+<view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+
+<view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " >
+  <view style=" padding: 0px 0px 0px 8px;  width: 30%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+    接送地址
+  </view>
+  <view style="width: 65%; background-color:#FFFFFF; float: right;color:#59be30; line-height: 48px; height: 48px; font-size: 14px; ">
+    {{selected_address_name}}
+  </view>
+</view>
+-->
+
+<view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+
+<view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " >
+  <view style=" padding: 0px 0px 0px 8px;  width: 30%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+    手机号码
+  </view>
+  <view style="width: 65%; padding-top: 4px; background-color:#FFFFFF; float: right; color:#59be30; line-height: 48px; height: 48px; ">
+    <input placeholder="请输入手机号码"  value="{{dhua}}" bindinput="set_dhua" style="height: 40px; width: 160px; background-color:#FFFFFF; line-height: 40px; font-size: 16px; color:#59be30; "/>
+  </view>
+</view>
+
+<view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+
+<view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " >
+  <view style=" padding: 0px 0px 0px 8px;  width: 30%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+    学员姓名
+  </view>
+  <view style="width: 65%; padding-top: 4px; background-color:#FFFFFF; float: right; color:#59be30; line-height: 48px; height: 48px; ">
+    <input placeholder="请输入姓名" value="{{xming}}" bindinput="set_xming" style="height: 40px; background-color:#FFFFFF; line-height: 40px; font-size: 16px; color:#59be30; "/>
+  </view>
+</view>
+
+<view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+
+<view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " >
+  <view style=" padding: 0px 0px 0px 8px;  width: 30%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+    图形验证码
+  </view>
+  <view style="width: 25%; padding-right: 4px; background-color:#FFFFFF; float: right; color:#59be30; line-height: 48px; height: 48px; ">
+    <image src="{{verifycode.img}}" mode="aspectFit" style="width: 74px; height: 48px; border-radius: 6px; " bindtap="get_verifycode"></image>
+  </view>
+  <view style="width: 35%; padding-top: 4px; padding-left: 8px; background-color:#FFFFFF; float: left; color:#59be30; line-height: 48px; height: 48px; ">
+    <input placeholder="图形验证码"  value="" bindinput="set_imgcode" style="height: 40px; width: 100px; background-color:#FFFFFF; line-height: 40px; font-size: 16px; color:#59be30; "/>
+  </view>
+</view>
+
+<view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+
+<view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " >
+  <view style=" padding: 0px 0px 0px 8px;  width: 30%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+    短信验证码
+  </view>
+  <view bindtap="send_sms_code" style="width: 25%; padding-right: 4px; background-color:#FFFFFF; float: right; color:#FFFFFF; line-height: 48px; height: 48px; ">
+    <label style="padding: 6px; background-color:{{button_color_txyzma}}; border-radius: 6px; font-size: 13px;">{{button_send_image_code}}</label>
+  </view>
+  <view style="width: 35%; padding-top: 4px; padding-left: 8px; background-color:#FFFFFF; float: left; color:#59be30; line-height: 48px; height: 48px; ">
+    <input placeholder="短信验证码"  value="" bindinput="set_smscode" style="height: 40px; width: 100px; background-color:#FFFFFF; line-height: 40px; font-size: 16px; color:#59be30; "/>
+  </view>
+</view>
+
+
+<view style="padding: 10px; background-color: #f3f3f3; " bindtap="click_goto_order" >
+  <view style="background-color: {{button_wxpay}}; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;">
+    {{button_wxpay_title}}
+  </view>
+</view>
+
+<view style="line-height: 24px; padding: 10px; background-color: #f3f3f3; font-size: 14px; color:#999999; " >
+<view>
+  1. 输入“手机号码”，“学员姓名”
+</view>
+<view>
+  2. 输入右边的数字“图形验证码”
+</view>
+<view>
+  3. 点击“发送验证码”，输入收到的验证码
+</view>
+<view>
+  4. “微信支付”变成可用，点击“微信支付”
+</view>
+</view>
+

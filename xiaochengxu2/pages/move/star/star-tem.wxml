@@ -1,0 +1,12 @@
+<template name="starTem">
+  <view class='star-container flex'>
+    <view class='flex star-box'>
+      <image src='../images/icon/star.png'></image>
+      <image src='../images/icon/star.png'></image>
+      <image src='../images/icon/star.png'></image>
+      <image src='../images/icon/star.png'></image>
+      <image src='../images/icon/star.png'></image>
+    </view>
+    <text>6.9</text>
+  </view>
+</template>  

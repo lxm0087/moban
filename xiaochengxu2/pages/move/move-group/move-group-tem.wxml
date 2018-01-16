@@ -1,0 +1,10 @@
+<import src="../star/star-tem.wxml" />
+<template name="moveGroupTem">
+  <view class='moveGroup-container'>
+    <view class='flex-col'>
+        <image class='movies-img' src='/pages/images/movies/1.jpg'></image>
+        <text class='movies-tit'>我不是潘金莲</text>
+        <template is="starTem" />
+    </view>
+  </view>
+</template>  

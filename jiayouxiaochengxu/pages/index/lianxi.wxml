@@ -1,0 +1,364 @@
+<swiper style="position: absolute; top: 44px; left: 0%; width: 100%; height: {{pageHeight}}px;" current="{{swiper_current}}" duration="300" bindchange="swiper_change">
+  <swiper-item data-hash="p1" style="display: block; width:100%; background:#FFFFFF; ">
+    <scroll-view scroll-y="true" style="height: {{scrollHeight}}px; ">
+      <view style="height: 8px; background-color:#FCFCFC;"></view>
+      <view style="background: #FFFFFF; ">
+        <view style="padding-bottom: 6px; padding-top: 6px; height: 78px;">
+          <view style="float: left; text-align: center; width: 33%; height: 42px; background-color:#FFFFFF; display: inline-block; " data-kemu="kemu1-sx" bindtap="click_kemu_lianxi">
+            <view style=" width: 100%; height: 36px; background-color:#FFFFFF; text-align: center;  ">
+              <image style=" padding-top: 8px; width: 34px; height: 32px; " mode="aspectFit" src="../../images/index.icon.shunxu.png"></image>
+            </view>
+            <view style=" width: 100%;  background-color:#FFFFFF; text-align: center; font-size: 12px; line-height: 42px; color:#999999; ">
+              顺序练习
+            </view>
+          </view>
+          <view style="width: 34%; text-align: center; height: 44px; background-color:#FFFFFF; display: inline-block;" data-kemu="kemu1-sj" bindtap="click_kemu_lianxi">
+            <view style=" width: 100%; height: 36px; background-color:#FFFFFF; text-align: center;  border-left: 1px solid #F0F0F0;">
+              <image style=" padding-top: 8px; width: 32px; height: 32px; " mode="aspectFit" src="../../images/index.icon.shuiji.png"></image>
+            </view>
+            <view style=" width: 100%;  background-color:#FFFFFF; text-align: center; font-size: 12px; line-height: 42px; color:#999999;   border-left: 1px solid #F0F0F0; ">
+              随机练习
+            </view>
+          </view>
+          <view style="width: 33%; text-align: center; height: 44px; background-color:#FFFFFF; display: inline-block; " data-kemu="kemu1" bindtap="click_kemu_kaoshi">
+            <view style=" width: 100%; height: 36px; background-color:#FFFFFF; text-align: center;  border-left: 1px solid #F0F0F0; ">
+              <image style=" padding-top: 8px; width: 32px; height: 32px; " mode="aspectFit" src="../../images/index.icon.moni.png"></image>
+            </view>
+            <view style=" width: 100%;  background-color:#FFFFFF; text-align: center; font-size: 12px; line-height: 42px; color:#999999;  border-left: 1px solid #F0F0F0;">
+              模拟考试
+            </view>
+          </view>
+        </view>
+        <view style="height: 8px; background-color:#FCFCFC;"></view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[0].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[0].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.1.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[0].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[0].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[1].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[1].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.2.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[1].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[1].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[2].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[2].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.3.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[2].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[2].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[3].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[3].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.4.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[3].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[3].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[4].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[4].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.5.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[4].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[4].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[5].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[5].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.6.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[5].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[5].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[6].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[6].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.7.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[6].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[6].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[7].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[7].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.8.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[7].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[7].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[8].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[8].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.9.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[8].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[8].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu1[9].display)}}; overflow: hidden;" data-kemu="kemu1-{{_zj_kemu1[9].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.10.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu1[9].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu1[9].sum}}题</view>
+          </view>
+        </view>
+      </view>
+      <view style="padding: 10px; text-align: center;" bindtap="weixinPayto"> </view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item data-hash="p2" style="display: block; height: 450px; width:100%; background:#FFFFFF;  border-left: 1px solid #FCFCFC;">
+    <scroll-view scroll-y="true" style="height: {{scrollHeight}}px; ">
+      <view style="height: 8px; background-color:#FCFCFC;"></view>
+      <view style="background: #FFFFFF; ">
+        <view style="padding-bottom: 6px; padding-top: 6px; height: 78px;">
+          <view style="float: left; width: 33%; text-align: center; height: 42px; background-color:#FFFFFF; display: inline-block; " data-kemu="kemu4-sx" bindtap="click_kemu_lianxi">
+            <view style=" width: 100%; height: 36px; background-color:#FFFFFF; text-align: center;  ">
+              <image style="  padding-top: 8px; width: 34px; height: 32px; " mode="aspectFit" src="../../images/index.icon.shunxu.png"></image>
+            </view>
+            <view style=" width: 100%;  background-color:#FFFFFF; text-align: center; font-size: 12px; line-height: 42px; color:#999999; ">
+              顺序练习
+            </view>
+          </view>
+          <view style="width: 33%; height: 44px; background-color:#FFFFFF; display: inline-block;" data-kemu="kemu4-sj" bindtap="click_kemu_lianxi">
+            <view style=" width: 100%; height: 36px; background-color:#FFFFFF; text-align: center;  border-left: 1px solid #F0F0F0;">
+              <image style="  padding-top: 8px; width: 32px; height: 32px; " mode="aspectFit" src="../../images/index.icon.shuiji.png"></image>
+            </view>
+            <view style=" width: 100%;  background-color:#FFFFFF; text-align: center; font-size: 12px; line-height: 42px; color:#999999;   border-left: 1px solid #F0F0F0; ">
+              随机练习
+            </view>
+          </view>
+          <view style="width: 33%; text-align: center; height: 44px; background-color:#FFFFFF; display: inline-block; " data-kemu="kemu4" bindtap="click_kemu_kaoshi">
+            <view style=" width: 100%; height: 36px; background-color:#FFFFFF; text-align: center;  border-left: 1px solid #F0F0F0; ">
+              <image style="  padding-top: 8px; width: 32px; height: 32px; " mode="aspectFit" src="../../images/index.icon.moni.png"></image>
+            </view>
+            <view style=" width: 100%;  background-color:#FFFFFF; text-align: center; font-size: 12px; line-height: 42px; color:#999999;  border-left: 1px solid #F0F0F0;">
+              模拟考试
+            </view>
+          </view>
+        </view>
+        <view style="height: 8px; background-color:#FCFCFC;"></view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[0].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[0].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.1.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[0].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[0].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[1].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[1].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.2.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[1].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[1].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[2].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[2].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.3.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[2].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[2].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[3].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[3].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.4.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[3].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[3].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[4].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[4].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.5.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[4].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[4].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[5].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[5].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.6.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[5].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[5].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[6].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[6].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.7.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[6].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[6].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[7].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[7].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.8.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[7].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[7].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[8].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[8].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.9.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[8].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[8].sum}}题</view>
+          </view>
+        </view>
+        <view class="subject_kemu" style="display:{{(_zj_kemu4[9].display)}}; overflow: hidden;" data-kemu="kemu4-{{_zj_kemu4[9].sectionid}}" bindtap="click_kemu_zhangjie">
+          <view style="float: left; padding-top: 6px; width: 44px; height: 36px;">
+            <image style=" width: 32px; height: 32px; " mode="aspectFit" src="../../images/number.10.png"></image>
+          </view>
+          <view style="margin-left: 44px;">
+            <view style="padding: 8px;">{{(_zj_kemu4[9].section)}}</view>
+            <view style="padding: 8px; ">{{_zj_kemu4[9].sum}}题</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item data-hash="p3" style="display: block; height: 450px; width:100%; background:#FFFFFF;  border-left: 1px solid #FCFCFC;">
+    <scroll-view scroll-y="true" style="height: {{scrollHeight}}px; ">
+      <view style="height: 8px; background-color:#FCFCFC;"></view>
+
+<!-- 无数据 -->
+<scroll-view wx:if="{{show_xianlu_list=='null'}}" scroll-y="true" style="position:absolute; top: 0px; width: 100%; height:{{pageHeight - 44}}px; overflow: hidden; ">
+  <view style="background-color: #F9F9F9; padding: 4px; "></view>
+
+<view wx:if="{{show_tianjiabobao}}" style="width: 100%; background-color:#FFFFFF; overflow: hidden; " >
+  <view style=" padding: 10px; background-color:#FFFFFF; color:#59be30;">
+    <input placeholder="请输入线路名称"  value="{{xianluming}}" bindinput="set_ming" style=" width: {{pageWidth - 28}}px; background-color:#F0F0F0; line-height: 40px; font-size: 16px; color:#59be30; border-radius: 6px; padding: 4px; "/>
+  </view>
+
+<view style="padding: 10px; background-color: #f3f3f3; ">
+  <view style="background-color: {{button_gotonext}}; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;" bindtap="click_goto_setup">
+    添 加
+  </view>
+</view>
+
+  <view style="height: 8px; background-color:#FFFFFF;"></view>
+  <view style="text-align: center; padding: 10px; font-size: 14px; font-weight: bold; color: #666666;" bindtap="click_cancel_setup">
+    取 消
+  </view>
+
+</view>
+
+  <view wx:if="{{hints_loading}}" style="background-color: #FFFFFF; height: 20px; padding-top: 40px; font-size: 12px; color:#999999; text-align: center; ">
+    正在载入 ...
+  </view>
+
+  <view wx:if="{{hints_noresult}}" style="background-color: #FFFFFF; height: 20px; padding-top: 40px; font-size: 12px; color:#999999; text-align: center; ">
+    请添加语音播报路线
+  </view>
+</scroll-view>
+
+<!-- 列表数据 -->
+<scroll-view wx:if="{{show_xianlu_list!='null'}}" scroll-y="true" style="position:absolute; top: 0px; width: 100%; height:{{pageHeight - 44}}px; overflow: hidden; ">
+  <view style="background-color: #F9F9F9; height: 4px; "></view>
+  <view wx:for="{{xianlu_list}}" wx:key="id" wx:for-item="items" style="padding: 10px; border-bottom: 1px solid #F9F9F9; overflow: hidden; position:relative; display: fixed; ">
+    <view bindtap="button_openxianlu" data-id="{{items.id}}" style=" float: left;  width: {{(pageWidth - 70)}}px; line-height: 32px; font-size: 16px; color:#666666; ">{{items.title}}</view>
+    <view bindtap="button_delxianlu" data-id="{{items.id}}" style="float: right; border-left: 1px solid #F0F0F0; padding-left: 10px; padding-top: 6px; ">
+      <image style=" width: 23px; height: 24px; " mode="aspectFit" src="../../images/icon.yuyin.bianji.del.png"></image>          
+    </view>
+  </view>
+</scroll-view>
+
+<view style="width: 100%; height: 44px; position: absolute; background-color:#FCFCFC; line-height: 44px; text-align: center; bottom: 0px; font-size: 16px; color:#f5834a; font-weight: bold; border-top: 2px solid #F9F9F9; " bindtap="click_tianjiabobao" >
+  + 添加新的播报路线
+</view>
+
+    </scroll-view>
+  </swiper-item>
+</swiper>
+
+
+
+<view style="position:absolute; top: 0px; height: 44px; background-color:#FFFFFF; width: 100%; overflow: hidden; border-top: 1px solid #F0F0F0;">
+  <view style="float: left; width: 33%; height: 42px; border-bottom: 2px {{kemu1_linecolor}} solid;  background-color:#FFFFFF; display: inline-block;" bindtap="click_kemu1">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/kemu1_{{kemu1_green}}.png"></image>
+    </view>
+    <view style=" float: right; width: 55%; font-weight: {{kemu1_bold}};  background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:{{kemu1_select}};">
+      科目一
+    </view>
+  </view>
+  <view style="width: 33%; height: 42px; border-bottom: 2px {{kemu4_linecolor}} solid;  background-color:#FFFFFF; display: inline-block;" bindtap="click_kemu4">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/kemu4_{{kemu4_green}}.png"></image>
+    </view>
+    <view style=" float: right; width: 55%; font-weight: {{kemu4_bold}};  background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:{{kemu4_select}};">
+      科目四
+    </view>
+  </view>
+
+  <view style="width: 33%; height: 42px; border-bottom: 2px {{kemu3_linecolor}} solid;  background-color:#FFFFFF; display: inline-block;" bindtap="click_kemu3">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+      <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/kemu3_{{kemu3_green}}.png"></image>
+    </view>
+    <view style=" float: right; width: 55%; font-weight: {{kemu3_bold}};  background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:{{kemu3_select}};">
+      科目三
+    </view>
+  </view>
+</view>
+
+
+
+<view style="position:absolute; bottom: 0px; height: 44px; background-color:#FFFFFF; width: 100%; overflow: hidden; border-top: 1px solid #F0F0F0;">
+  <view data-to="index" style="float: left; width: 33%; height: 42px; border-top: 2px #FFFFFF solid;  background-color:#FFFFFF; display: inline-block;" bindtap="toolbar_jump_to">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+ <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/toolbar.jiaxiao.0.png"></image>
+    </view>
+    <view style=" float: right; width: 55%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:#333333;">
+      报驾校
+    </view>
+  </view>
+  <view data-to="lianxi" style="width: 33%; height: 42px; border-top: 2px #15b600 solid;  background-color:#FFFFFF; display: inline-block;" bindtap="toolbar_jump_to">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+ <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/toolbar.lianxi.1.png"></image>
+
+    </view>
+    <view style=" float: right; width: 55%; font-weight: bold;  background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:#15b600;">
+      练科目
+    </view>
+  </view>
+  <view data-to="jiaolian" style="width: 33%; height: 42px; border-top: 2px #FFFFFF solid;  background-color:#FFFFFF; display: inline-block;" bindtap="toolbar_jump_to">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+ <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/toolbar.jiaolian.0.png"></image>
+
+    </view>
+    <view style=" float: right; width: 55%; font-weight: normal; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:#333333;">
+      约教练
+    </view>
+  </view>
+</view>

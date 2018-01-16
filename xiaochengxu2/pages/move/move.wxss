@@ -1,0 +1,2 @@
+/* pages/move/move.wxss */
+@import "move-list/move-list-tem.wxss";

@@ -1,0 +1,144 @@
+<view style="height: {{scrollHeight + 44}}px; " >
+
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" style="width: 100%; height: {{(pageWidth * 0.75)}}px; ">
+    <block wx:for="{{jiaxiaoxiangce}}" wx:key="thumb">
+      <swiper-item style="width: 100%; background-color: #FFFFFF; overflow: hidden; position:relative;">
+    <image style="width: 100%; " mode="widthFix" src="{{item.thumb}}"></image>
+    <image  wx-if="{{(jiaxiaodata.js == 'y')}}"  style="position: absolute; left:0px; width: 120px; z-index:9; " mode="widthFix" src="../../images/icon.jiaxiao.jishi.png"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view style="overflow:hidden; padding: 8px; line-height: 22px; ">
+    <view style="float: left; font-size: 16px; font-weight: bold; color:#666666; ">{{jiaxiaodata.title}}</view>
+    <view style="float: left; margin-left: 8px; background-color: #15b600; color:#FFFFFF; border-radius: 6px; padding-left: 4px; padding-right: 4px; font-size: 10px;">已认证</view>
+    <view style="float: right; padding-left: 4px; padding-right: 4px; font-size: 12px; color:#666666; text-decoration:line-through; ">{{jiaxiaodata.priceb}} </view>
+    <view style="float: right; padding-left: 4px; padding-right: 4px; font-size: 16px; color:#FF0000; font-weight: bold; ">{{jiaxiaodata.price}} </view>
+  </view>
+
+  <view style="background-color: #F9F9F9; padding: 4px; "></view>
+
+  <view bindtap="showjiaxiaoditu" style="overflow:hidden; padding: 8px; padding-right: 8px;  line-height: 22px; color:#666666; font-size: 13px; overflow: hidden;">
+    <view style="float: left; "><image style="width: 16px; " mode="widthFix" src="../../images/icon.jiaxiao.weizhi.png"></image></view>
+    <view style="margin-left: 24px; font-size: 13px; color:#666666; "> {{jiaxiaoxiangqing.address}}</view>
+  </view>
+
+  <map wx-if="{{show_jiaxiaoditu}}" id="map" longitude="{{jiaxiaodata.jingdu}}" latitude="{{jiaxiaodata.weidu}}" scale="13" bindcontroltap="controltap" markers="{{jiaxiaomarkers}}" show-location="true" style="width: 100%; height: 200px;"></map>
+
+  <view style="background-color: #F9F9F9; padding: 12px; ">
+    <view bindtap="makecallto" style="background-color: #48c23d; color: #FFFFFF; font-weight: bold; font-size: 16px; text-align: center; padding: 10px; border-radius: 6px;">报名 400 961 5360</view>
+    <view wx-if="{{(jiaxiaodata.js == 'y')}}" style="height: 12px; "></view>
+
+    <view wx-if="{{show_jishishoufei}}" class="jishi_duanluo">
+      <view class="jishi_biaoti">费用明细</view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">报 名 费</view>
+        <view class="jishi_zhengwen_you">1200元</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">科二约车</view>
+        <view class="jishi_zhengwen_you">100元/小时</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">科三约车</view>
+        <view class="jishi_zhengwen_you">100元/小时</view>  
+      </view>
+      <view style="font-size: 12px; color:#999999;">
+      注：费用只包含报名费，不包含科目二、科目三练车费用，科目二、科目三
+需再驾优学车APP预约练车
+      </view>
+    </view>
+
+
+    <view wx-if="{{show_jishishoufei}}" class="jishi_duanluo">
+      <view class="jishi_biaoti">培训内容</view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">驾照类型</view>
+        <view class="jishi_zhengwen_you">C1</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">练车人数</view>
+        <view class="jishi_zhengwen_you">一人一车</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">训练接送</view>
+        <view class="jishi_zhengwen_you">专车接送</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">科 目 一</view>
+        <view class="jishi_zhengwen_you">通过驾优学车APP进行习题练习和模拟考试，提高考试通过率</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">科二约车</view>
+        <view class="jishi_zhengwen_you">22个学时，通过驾优学车APP一键呼叫教练员，专车接送，进行约车练习</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">科三约车</view>
+        <view class="jishi_zhengwen_you">20个学时，通过驾优学车APP一键呼叫教练员，专车接送，进行约车练习</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">科 目 四</view>
+        <view class="jishi_zhengwen_you">通过驾优学车APP进行习题练习和模拟考试，提高考试通过率</view>  
+      </view>
+    </view>
+
+    <view wx-if="{{show_jishishoufei}}" class="jishi_duanluo">
+      <view class="jishi_biaoti">特色服务</view>
+      <view style="height: 6px; "></view>
+      <view style="font-size: 12px; color:#999999; text-align: center;">
+      驾优学车：自主约车、计时收费、专车接送
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">自主约车</view>
+        <view class="jishi_zhengwen_you">通过驾优学车APP一键预约，练车时间由自己把握
+</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">计时收费</view>
+        <view class="jishi_zhengwen_you">驾优学车APP科目二、科目三约车练习费用按小时结算</view>  
+      </view>
+      <view style="overflow: hidden; ">
+        <view class="jishi_zhengwen_zuo">专车接送</view>
+        <view class="jishi_zhengwen_you">通过驾优学车APP一键预约，支付费用后会有专车前来接送，不挤公交</view>  
+      </view>
+    </view>
+
+    <view wx-if="{{show_jishishoufei}}" style="height: 12px; "></view>
+
+    <view wx-if="{{(jiaxiaodata.js == 'y')}}" bindtap="showjishishoufei" style="background-color: #48c23d; color: #FFFFFF; font-weight: bold; font-size: 16px; text-align: center; padding: 10px; border-radius: 6px;">了解计时收费</view>
+  </view>
+
+  <view style=" padding: 8px; line-height: 22px; border-bottom: 1px solid #F0F0F0; " >
+    <view style="font-size: 13px; font-weight: bold; color:#999999; ">详细信息</view>
+  </view>
+
+  <view style="height: 4px; "></view>
+
+  <view style="overflow:hidden; padding: 8px; color:#666666;  line-height: 22px; font-size: 13px; ">
+    <view style="float: left; "><image style=" width: 12px; " mode="widthFix" src="../../images/icon.jiaxiao.jiaolian.png"></image> 教练人数：{{jiaxiaoxiangqing.lp_hospital}} 人</view>
+    <view style="float: right; "><image style="width: 12px; " mode="widthFix" src="../../images/icon.jiaxiao.cheliang.png"></image> 教学车辆：{{jiaxiaoxiangqing.lp_edu}} 辆</view>
+  </view>
+  <view style="overflow:hidden; padding: 8px; color:#666666;  line-height: 22px; font-size: 13px; ">
+    <view style="float: left; "><image style=" width: 12px; " mode="widthFix" src="../../images/icon.jiaxiao.zhouqi.png"></image> 学车周期：{{jiaxiaoxiangqing.lp_company}} 天</view>
+    <view style="float: right; "><image style=" width: 12px; " mode="widthFix" src="../../images/icon.jiaxiao.mianji.png"></image> 驾校面积：{{jiaxiaoxiangqing.lp_totalarea}} 亩</view>
+  </view>
+  <view style="overflow:hidden; padding: 8px; color:#666666;  line-height: 22px; font-size: 13px; ">
+    <image style=" width: 12px; " mode="widthFix" src="../../images/icon.jiaxiao.tedian.png"></image> 驾校特点：{{jiaxiaodata.tedian}}
+  </view>
+  <view style="overflow:hidden; padding: 8px; color:#666666;  line-height: 22px; font-size: 13px; ">
+    <image style=" width: 12px; " mode="widthFix" src="../../images/icon.jiaxiao.banche.png"></image> 班车路线：{{jiaxiaoxiangqing.lp_bus}}
+  </view>
+
+  <view style="background-color: #F9F9F9; height: 6px; "></view>
+
+  <view style=" padding: 10px; line-height: 22px; border-bottom: 1px solid #F0F0F0; " bindtap="test_video">
+    <view style="font-size: 13px; font-weight: bold; color:#999999; ">驾校介绍</view>
+  </view>
+  <view style="overflow:hidden; padding: 8px; color:#666666;  line-height: 22px; font-size: 13px; ">
+    　{{jiaxiaoxiangqing.content}}
+  </view>
+
+  <view style="background-color: #F9F9F9; padding: 12px; ">
+    <view bindtap="makecallto" style="background-color: #48c23d; color: #FFFFFF; font-weight: bold; font-size: 16px; text-align: center; padding: 10px; border-radius: 6px;">报名 400 961 5360</view>
+  </view>
+</view>

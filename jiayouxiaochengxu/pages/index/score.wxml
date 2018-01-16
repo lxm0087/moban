@@ -1,0 +1,31 @@
+
+<view style="height: 20px; width: 100%; "></view>
+
+<view style="width: 100%; height: 180px; background-color:#FFFFFF; text-align: center; ">
+  <image style=" width: 160px; height: 160px; " mode="aspectFit" src="https://www.jyouw.cn//jiayouxueche/xcx/{{score_result}}"></image>
+</view>
+
+<view style="height: 20px; width: 100%; "></view>
+
+<view style="top: 0px; background-color:#FFFFFF; width: 100%; overflow: hidden;">
+  <view style="float: left; width: 49%;  background-color:#FFFFFF; display: inline-block;  border-right: 2px dashed #F0F0F0;" >
+    <view style=" text-align: center; width: 100%; background-color:#FFFFFF; font-size: 20px; font-weight: bold; line-height: 42px; ">
+       成绩
+    </view>
+    <view style=" text-align: center; width: 100%; color:#ff0000; background-color:#FFFFFF; font-size: 20px; font-weight: bold; line-height: 42px; ">
+       {{score}}
+    </view>
+  </view>
+  <view style="width: 50%; height: 42px; background-color:#FFFFFF; display: inline-block;" bindtap="click_kemu4">
+    <view style=" text-align: center; width: 100%; background-color:#FFFFFF; font-size: 20px; font-weight: bold; line-height: 42px; ">
+       时间
+    </view>
+    <view style=" text-align: center; width: 100%; color:#ff0000; background-color:#FFFFFF; font-size: 20px; font-weight: bold; line-height: 42px; ">
+       {{times}}
+    </view>
+  </view>
+</view>
+
+
+  <image style="position:fixed; bottom: 0px; width: 100%; height: {{(pageWidth/2.7)}}px;  " mode="aspectFit" src="https://www.jyouw.cn//jiayouxueche/xcx/icon.kaoshi.jpg"></image>
+

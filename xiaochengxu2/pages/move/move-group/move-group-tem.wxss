@@ -1,0 +1,20 @@
+@import "../star/star-tem.wxss";
+.movies-img{
+  width: 200rpx;
+  height: 270rpx;
+}
+
+.cat-name{
+  font-size: 26rpx;
+  color: #666;
+  line-height: 90rpx;
+  font-weight:600; 
+  margin-left: 2rpx;
+}
+
+.movies-tit{
+  font-size: 23rpx;
+  line-height: 76rpx;
+  color: #777;
+  letter-spacing: 2rpx;
+}

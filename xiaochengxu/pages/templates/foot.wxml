@@ -1,0 +1,26 @@
+<template name='foot'>
+<view  class='tel aimg' >
+   <image src='http://www.nclaimei.com/MobileCom/images/lmphone.png'></image>
+</view>
+<view class='contactus flex'>
+  <view class='map-box aimg'>
+   <image src='http://m.nclaimei.com/images/map.png' ></image>
+  </view>
+  <view class='flex-col'>
+    <view class='address aimg'>
+    <image src='http://m.nclaimei.com/images/time.png'></image>
+  </view>
+  <view class='flex flex-bw' style='margin-top:30rpx;'>
+      <image class='btn' src='../img/btn1.png'></image>
+      <image style='padding-left:10rpx;' class='btn' src='../img/btn2.png'></image>
+  </view>
+  </view>
+</view>
+<view class='fot flex'>
+  <view class='fot_li'></view>
+  <view class='fot_li'></view>
+  <view class='fot_li'></view>
+  <view class='fot_li'></view>
+</view>
+
+</template>

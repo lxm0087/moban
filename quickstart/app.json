@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/test/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "玩爆黄金周",
+    "navigationBarTextStyle":"black",
+    "backgroundColor":"#eeeeee"
+  }
+}

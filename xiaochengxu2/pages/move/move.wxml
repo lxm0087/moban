@@ -1,0 +1,5 @@
+<!--pages/move/move.wxml-->
+<import src="move-list/move-list-tem.wxml" />
+<view>
+  <template is="moveListTem" />
+</view> 

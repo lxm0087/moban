@@ -1,0 +1,104 @@
+    <scroll-view scroll-y="true" style="height: {{scrollHeight}}px; ">
+      <view style="height: 8px; background-color:#FCFCFC;"></view>
+      <view style="width: 100%; background-color:#f3f3f3; height: 32px; line-height: 32px; color:#a9a9a9; font-weight: bold; font-size: 12px; text-align: center; ">一人一车一教练</view>
+      <view style="height: 8px; background-color:#FCFCFC;"></view>
+      <view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " bindtap="select_map">
+        <view style="width: 5%; background-color:#FFFFFF;  float: left; text-align: center; height: 34px; padding: 16px 10px 0px 10px; ">
+          <image src="../../images/quan.png" mode="aspectFit" style="width: 12px; height: 12px; "></image>
+        </view>
+        <view style="width: 60%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+          {{selectpoint}}
+        </view>
+        <view style="width: 5%; background-color:#FFFFFF; text-align: center; float: right; height: 34px; padding: 12px 10px 0px 10px; ">
+          <image src="../../images/arrow.png" mode="aspectFit" style="width: 8px; height: 12px; "></image>
+        </view>
+      </view>
+      <view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+      <view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; " bindtap="select_kemu">
+        <view style="width: 5%; background-color:#FFFFFF;  float: left; text-align: center; height: 34px; padding: 12px 10px 0px 10px; ">
+          <image src="../../images/quan.png" mode="aspectFit" style="width: 12px; height: 12px; "></image>
+        </view>
+        <view style="width: 50%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+          请选择科目
+        </view>
+        <view style="width: 5%; background-color:#FFFFFF; text-align: center; float: right; height: 34px; padding: 16px 10px 0px 10px; ">
+          <image src="../../images/arrow.png" mode="aspectFit" style="width: 8px; height: 12px; "></image>
+        </view>
+        <view style="width: 48px; background-color:#FFFFFF; float: right; color:#59be30; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+          {{selected_kemu_name}}
+        </view>
+      </view>
+      <view style="border-bottom: 1px solid #f7f7f7; height: 1px;"></view>
+      <view style="width: 100%; background-color:#FFFFFF; height: 48px; overflow: hidden; ">
+        <view style="width: 5%; background-color:#FFFFFF;  float: left; text-align: center; height: 34px; padding: 12px 10px 0px 10px; ">
+          <image src="../../images/quan.png" mode="aspectFit" style="width: 12px; height: 12px; "></image>
+        </view>
+        <view style="width: 40%; background-color:#FFFFFF; float: left; color:#999999; line-height: 48px; height: 48px; font-size: 14px; font-weight: bold; ">
+          体验价
+        </view>
+        <view style="width: 130px; background-color:#FFFFFF; float: right; color:#59be30; text-align: right; height: 48px; font-size: 14px; font-weight: bold; ">
+          <view style="width: 115px; background-color:#FFFFFF; text-align: right; color:#59be30; line-height: 28px; height: 26px; font-size: 14px; font-weight: bold; ">
+            100元/小时
+          </view>
+          <view style="width: 115px; background-color:#FFFFFF; text-decoration:line-through; text-align: right;color:#B0B0B0; line-height: 18px; height: 18px; font-size: 11px; font-weight: bold; ">
+            原价:120元/小时
+          </view>
+        </view>
+      </view>
+      <view style="padding: 10px; background-color: #f3f3f3; " bindtap="click_goto_pay">
+        <view style="background-color: {{goto_pay_color}}; text-align: center; border-radius: 6px; padding: 10px; font-size: 14px; font-weight: bold; color: #FFFFFF;">
+          确认订单
+        </view>
+      </view>
+      <view style="padding: 10px; background-color: #FFFFFF; text-align: center; font-size: 13px; color:#999999; ">
+        注: 目前仅支持江西省南昌市的约教练派单.
+      </view>
+      <view style="height: 20px;"></view>
+      <view style="padding: 20px; background-color: #FFFFFF; text-align: center; font-size: 13px; color:#666666; ">
+        {{order_check_hints}}
+      </view>
+      <view style="position:absolute; bottom: 10px; right: 10px; " bindtap="click_goto_order_history">
+        <image src="../../images/order.history.png" mode="aspectFit" style=" border: 2px dashed #48c23d; border-radius: 32px; width: 64px; height: 64px; "></image>
+      </view>
+    </scroll-view>
+
+    
+    
+<view style="position:fixed; bottom: 0px; height: 44px; background-color:#FFFFFF; width: 100%; overflow: hidden; border-top: 1px solid #F0F0F0;">
+  <view data-to="index" style="float: left; width: 33%; height: 42px; border-top: 2px #FFFFFF solid;  background-color:#FFFFFF; display: inline-block;" bindtap="toolbar_jump_to">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+ <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/toolbar.jiaxiao.0.png"></image>
+    </view>
+    <view style=" float: right; width: 55%; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:#333333;">
+      报驾校
+    </view>
+  </view>
+  <view data-to="lianxi" style="width: 33%; height: 42px; border-top: 2px #FFFFFF solid;  background-color:#FFFFFF; display: inline-block;" bindtap="toolbar_jump_to">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+ <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/toolbar.lianxi.0.png"></image>
+
+    </view>
+    <view style=" float: right; width: 55%; font-weight: normal;  background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:#333333;">
+      练科目
+    </view>
+  </view>
+  <view data-to="jiaolian" style="width: 33%; height: 42px; border-top: 2px #15b600 solid;  background-color:#FFFFFF; display: inline-block;" bindtap="toolbar_jump_to">
+    <view style=" float: left; width: 45%; height: 42px; background-color:#FFFFFF; text-align: right; ">
+ <image style=" padding-right: 6px; padding-top: 8px; width: 24px; height: 24px; " mode="aspectFit" src="../../images/toolbar.jiaolian.1.png"></image>
+
+    </view>
+    <view style=" float: right; width: 55%; font-weight: bold; background-color:#FFFFFF; text-align: left; font-size: 13px; line-height: 42px; color:#15b600;">
+      约教练
+    </view>
+  </view>
+</view>
+
+
+
+<view wx:if="{{show_mask}}" bindtap="click_hide_mask" style="position:absolute; top: 0px; background-color: #333333; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5; width: 100%; height: {{(pageHeight + 44)}}px; "></view>
+<view animation="{{animation_kemu}}" wx:if="{{show_kemu_list}}" style="position:absolute; bottom: {{show_kemu_bottom}}px; width: 100%; ">
+  <view style="background-color: #f3f3f3; height: 1px;"></view>
+  <view data-kemu="科目二" bindtap="click_select_kemu" style="background-color: #FFFFFF; height: 32px; text-align: center; padding: 12px 0px 0px 0px; line-height: 20px; font-size: 14px; color: #59be30; font-weight: bold;">科目二</view>
+  <view style="background-color: #f3f3f3; height: 1px;"></view>
+  <view data-kemu="科目三" bindtap="click_select_kemu" style="background-color: #FFFFFF; height: 32px; text-align: center; padding: 12px 0px 0px 0px; line-height: 20px; font-size: 14px; color: #59be30; font-weight: bold;">科目三</view>
+</view>

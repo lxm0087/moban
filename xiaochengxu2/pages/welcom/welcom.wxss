@@ -1,0 +1,32 @@
+.wel-container{
+  background:#b3d4db;
+  display: flex;
+  flex-direction: column;
+  height: 1334rpx;
+}
+
+.headimg{
+  width: 165rpx;
+  height: 165rpx;
+  margin: 148rpx auto 0;
+}
+
+.tit{
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 238rpx;
+}
+
+.btn{
+  margin-top: 105rpx;
+  background: #405f80;
+
+}
+
+button[plain]{
+  color: #405f80 !important;
+  border:1px solid #405f80;
+  font-size: 26rpx;
+
+}
